@@ -30,6 +30,8 @@ export default function Onboarding() {
   const [currentPage, setCurrentPage] = useState(0);
   const { pages, buttonText } = onboardingContents[currentPage];
 
+  if (localStorage.getItem('account_name')) router.push('/budget');
+
   const handleButtonClick = () => {
     if (currentPage < onboardingContents.length - 1) {
       setCurrentPage(currentPage + 1);
@@ -49,7 +51,7 @@ export default function Onboarding() {
                         <div key={index}>{word}</div>
                     ))}
                 </div>
-                <div className='mx-6 text-lg text-gray-200'>
+                <div className='mx-6 text-lg text-neutral-200'>
                     {page.subtitle?.split('&&').map((word, index) => (
                         <div key={index}>{word}</div>
                     ))}
