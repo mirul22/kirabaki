@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn(
         inter.className,
-        "bg-neutral-950 text-slate-100 w-screen h-screen overflow-hidden max-w-screen-sm mx-auto",
+        "bg-neutral-950 text-slate-100 w-screen h-screen overflow-x-hidden max-w-screen-sm mx-auto",
       )}>
         {children}
         <Toaster />

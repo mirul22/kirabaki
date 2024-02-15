@@ -42,7 +42,7 @@ export default function Onboarding() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-items-center text-center w-full h-screen overflow-hidden justify-between">
+    <div className="flex flex-col items-center justify-items-center text-center w-full justify-between">
       <div className="mt-12 w-5/6">
         {pages.map((page, index) => (
             <div key={index} className='space-y-2'>

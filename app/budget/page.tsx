@@ -2,7 +2,19 @@
 
 import React from 'react'
 import { Separator } from '@/components/ui/separator';
-import { Pencil, Trash } from 'lucide-react';
+import { Pencil, PlusCircle, Trash } from 'lucide-react';
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
 const listOfTransactions = [
     {
@@ -50,6 +62,61 @@ const listOfTransactions = [
         title: 'Others',
         amount: '1,000.00',
     },
+    {
+        type: 'expenses',
+        title: 'Groceries',
+        amount: '500.00',
+    },
+    {
+        type: 'expenses',
+        title: 'Utilities',
+        amount: '1,000.00',
+    },
+    {
+        type: 'expenses',
+        title: 'Entertainment',
+        amount: '1,000.00',
+    },
+    {
+        type: 'expenses',
+        title: 'Transport',
+        amount: '1,000.00',
+    },
+    {
+        type: 'expenses',
+        title: 'Health',
+        amount: '1,000.00',
+    },
+    {
+        type: 'expenses',
+        title: 'Others',
+        amount: '1,000.00',
+    },
+    {
+        type: 'expenses',
+        title: 'Utilities',
+        amount: '1,000.00',
+    },
+    {
+        type: 'expenses',
+        title: 'Entertainment',
+        amount: '1,000.00',
+    },
+    {
+        type: 'expenses',
+        title: 'Transport',
+        amount: '1,000.00',
+    },
+    {
+        type: 'expenses',
+        title: 'Health',
+        amount: '1,000.00',
+    },
+    {
+        type: 'expenses',
+        title: 'Others',
+        amount: '1,000.00',
+    },
 ];
 
 export default function page() {
@@ -63,7 +130,8 @@ export default function page() {
     // }
 
     return (
-        <div className='flex flex-col items-center justify-items-center gap-4'>
+        <>
+        <div className='flex flex-col items-center justify-items-center gap-4 w-full'>
             <div className='font-bold text-2xl lg:text-3xl leading-tight mt-10'>
                 KIRABAKI
             </div>
@@ -92,10 +160,10 @@ export default function page() {
                         <div className='flex text-center justify-items-center text-md text-neutral-400 font-normal'>
                             {transaction.type === 'income' ? <span className='text-green-400 mr-2'>+</span> : <span className='text-red-400 mr-2'>-</span>}{transaction.amount}
                         </div>
-                        <div className='text-md text-white cursor-pointer opacity-0 group-hover:opacity-100 group-hover:transition-opacity group-hover:ml-5 group-hover:duration-300'>
+                        <div className='text-md text-white cursor-pointer hidden group-hover:block opacity-0 group-hover:opacity-100 group-hover:transition-opacity group-hover:ml-5 group-hover:duration-300'>
                             <Pencil size={20} />
                         </div>
-                        <div className='text-md text-red-500 cursor-pointer opacity-0 group-hover:opacity-100 group-hover:transition-opacity group-hover:ml-1 group-hover:duration-300'>
+                        <div className='text-md text-red-500 cursor-pointer hidden group-hover:block opacity-0 group-hover:opacity-100 group-hover:transition-opacity group-hover:ml-1 group-hover:duration-300'>
                             <Trash size={20} />
                         </div>
                     </div>
@@ -104,5 +172,53 @@ export default function page() {
                 </>
             ))}
         </div>
+        <Dialog>
+            <DialogTrigger asChild>
+                <PlusCircle size={50} className='text-white cursor-pointer bottom-10 sticky mx-auto' />
+            </DialogTrigger>
+            <DialogContent className="md:w-[310px] mx-auto text-neutral-950">
+                <DialogHeader>
+                    <DialogTitle>Add transaction</DialogTitle>
+                </DialogHeader>
+                <div className="grid gap-4 py-4">
+                    <div className="grid grid-row items-center gap-4">
+                        <Label htmlFor="type">
+                        Transaction Type
+                        </Label>
+                        <Input
+                        id="type"
+                        name='type'
+                        className="col-span-3"
+                        />
+                    </div>
+                    <div className="grid grid-row items-center gap-4">
+                        <Label htmlFor="transaction_name">
+                        Name
+                        </Label>
+                        <Input
+                        id="transaction_name"
+                        name='transaction_name'
+                        className="col-span-3"
+                        />
+                    </div>
+                    <div className="grid grid-row items-center gap-4">
+                        <Label htmlFor="amount">
+                        Amount
+                        </Label>
+                        <Input
+                            id="amount"
+                            name='amount'
+                            className="col-span-3"
+                        />
+                    </div>
+                </div>
+                <DialogFooter>
+                    <Button className="w-full text-neutral-50 mt-5" size={"lg"} type="submit">
+                        Add Transaction
+                    </Button>
+                </DialogFooter>
+            </DialogContent>
+        </Dialog>
+        </>
     )
 }
