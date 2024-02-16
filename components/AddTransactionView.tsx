@@ -39,8 +39,16 @@ function AddTransactionView({
 
     useEffect(() => {
         setAccountName(localStorage.getItem('account_name') || '');
-    }, [accountName]);
-    
+
+        if (!open) {
+            editReturn();
+            setTransactionId('');
+        setTransactionType('');
+        setTransactionName('');
+        setTransactionAmount('');
+        }
+    }, [accountName, open, editReturn]);
+
     const handleSubmit = (data: FormData) => {
         const formattedAmount = parseFloat(data.get('amount') as string).toFixed(2);
 
@@ -71,6 +79,11 @@ function AddTransactionView({
             onTransactionAdded();
             toast.success('Transaction added successfully');
         }
+
+        setTransactionId('');
+        setTransactionType('');
+        setTransactionName('');
+        setTransactionAmount('');
     };
 
     useEffect(() => {
@@ -84,21 +97,16 @@ function AddTransactionView({
                 setTransactionAmount(transaction.amount);
                 setOpen(true);
             }
-        }
-    }, [editTransaction]);
-
-    useEffect(() => {
-        if (!open) {
+        } else {
             setTransactionId('');
             setTransactionType('');
             setTransactionName('');
             setTransactionAmount('');
-            editReturn();
         }
-    }, [open, editReturn]);
+    }, [editTransaction]);
 
     return (
-        <Dialog open={open} onOpenChange={setOpen} >
+        <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
                 <PlusCircle size={50} className='text-white cursor-pointer bottom-10 sticky mx-auto' />
             </DialogTrigger>
