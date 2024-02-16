@@ -55,7 +55,7 @@ export default function GetStarted() {
     }
   
     return (
-      <div className="flex flex-row items-center justify-center h-full">
+      <div className="flex flex-row items-center justify-center h-full w-5/6 lg:max-w-screen-sm mx-auto">
         <Card>
             <CardHeader>
                 <CardTitle>What is your name</CardTitle>
