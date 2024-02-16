@@ -19,7 +19,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { toast } from "sonner";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid/v4";
 
 function AddTransactionView({editTransaction = null, editReturn, onTransactionAdded }) {
     const [open, setOpen] = useState(false);
@@ -51,7 +51,7 @@ function AddTransactionView({editTransaction = null, editReturn, onTransactionAd
             }
         } else {
             const transaction = {
-                id: uuidv4().substr(0, 8),
+                id: uuidv4(),
                 type: data.get('type'),
                 name: data.get('transaction_name'),
                 amount: formattedAmount,
