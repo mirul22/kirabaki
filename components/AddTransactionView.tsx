@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from 'react'
+import React, { ReactElement, use, useEffect, useState } from 'react'
 import { PlusCircle } from 'lucide-react';
 import {
     Dialog,
@@ -21,7 +21,15 @@ import { Label } from '@/components/ui/label';
 import { toast } from "sonner";
 import { v4 as uuidv4 } from "uuid";
 
-function AddTransactionView({editTransaction = null, editReturn, onTransactionAdded }) {
+function AddTransactionView({
+    editTransaction = null,
+    editReturn,
+    onTransactionAdded,
+  }: {
+    editTransaction: string | null;
+    editReturn: () => void;
+    onTransactionAdded: () => void;
+  }): ReactElement {
     const [open, setOpen] = useState(false);
     const [accountName, setAccountName] = useState('');
     const [transactionId, setTransactionId] = useState('');
@@ -38,7 +46,7 @@ function AddTransactionView({editTransaction = null, editReturn, onTransactionAd
 
         if (transactionId) {
             const transactions = JSON.parse(localStorage.getItem('transactions') || '[]');
-            const transaction = transactions.find((transaction) => transaction.id === transactionId);
+            const transaction = transactions.find((transaction: { id: string }) => transaction.id === transactionId);
 
             if (transaction) {
                 transaction.type = data.get('type') as string;
@@ -68,7 +76,7 @@ function AddTransactionView({editTransaction = null, editReturn, onTransactionAd
     useEffect(() => {
         if (editTransaction !== null) {
             const transactions = JSON.parse(localStorage.getItem('transactions') || '[]');
-            const transaction = transactions.find((transaction) => transaction.id === editTransaction);
+            const transaction = transactions.find((transaction: { id: string }) => transaction.id === editTransaction);
             if (transaction) {
                 setTransactionId(editTransaction);
                 setTransactionType(transaction.type);

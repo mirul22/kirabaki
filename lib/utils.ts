@@ -5,7 +5,6 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-
-export const formatNumber = (number, decimalPlaces = 2) => {
+export const formatNumber = (number: number, decimalPlaces = 2) => {
   return number.toLocaleString('en-US', { minimumFractionDigits: decimalPlaces, maximumFractionDigits: decimalPlaces });
 };

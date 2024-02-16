@@ -2,7 +2,18 @@ import React, { useEffect, useState } from 'react'
 import { Separator } from '@/components/ui/separator'
 import { formatNumber } from '@/lib/utils';
 
-function SummaryView({ listOfTransactions }) {
+interface Transaction {
+    id: string;
+    type: string;
+    name: string;
+    amount: number;
+}
+
+interface SummaryViewProps {
+    listOfTransactions: Transaction[];
+}
+  
+function SummaryView({ listOfTransactions }: SummaryViewProps) {
     
     const [incomeTotal, setIncomeTotal] = useState(0);
     const [expensesTotal, setExpensesTotal] = useState(0);
@@ -13,9 +24,9 @@ function SummaryView({ listOfTransactions }) {
         let expenses = 0;
         listOfTransactions.forEach((transaction) => {
             if (transaction.type === 'income') {
-                income += parseFloat(transaction.amount);
+                income += parseFloat(transaction.amount.toString());
             } else {
-                expenses += parseFloat(transaction.amount);
+                expenses += parseFloat(transaction.amount.toString());
             }
         });
         setIncomeTotal(income);
