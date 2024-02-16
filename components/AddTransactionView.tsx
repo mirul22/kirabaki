@@ -87,7 +87,7 @@ function AddTransactionView({editTransaction = null, editReturn, onTransactionAd
             setTransactionAmount('');
             editReturn();
         }
-    }, [open]);
+    }, [open, editReturn]);
 
     return (
         <Dialog open={open} onOpenChange={setOpen} >
