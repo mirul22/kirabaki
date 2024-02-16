@@ -6,36 +6,56 @@ import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { toast } from "sonner";
+import { useRouter } from 'next/navigation'
 
 export default function GetStarted() {
+    const router = useRouter();
 
     const handleSubmit = (data: FormData) => {
         if (data.get("account_name") === "") {
             toast.error("Please enter a name for your account");
         } else {
             localStorage.setItem("account_name", data.get("account_name") as string);
+            router.push('/budget', { scroll: false })
         }
     };
+
+    if (localStorage.getItem("account_name")) {
+        return (
+            <div className="flex flex-col items-center justify-items-center text-center w-full h-screen justify-between">
+                <div className="mt-12 w-5/6">
+                    <div className='mx-6 my-4 text-2xl text-neutral-200'>
+                        Welcome
+                    </div>
+                    <div className='font-extrabold text-5xl lg:text-6xl leading-tight'>
+                        {localStorage.getItem("account_name")}
+                    </div>
+                    <div className='mx-6 my-4 text-lg text-neutral-200'>
+                        Thanks for using Kirabaki!
+                    </div>
+                </div>
+            </div>
+        )
+    }
   
     return (
       <div className="flex flex-row items-center justify-center h-full">
         <Card>
             <CardHeader>
-                <CardTitle>Name Your Account</CardTitle>
+                <CardTitle>What is your name</CardTitle>
             </CardHeader>
             <CardContent>
                 <form action={handleSubmit}>
                     <div className="grid w-full items-center gap-4">
                         <div className="flex flex-col space-y-1.5">
                         <Label htmlFor="account_name">Name</Label>
-                        <Input id="account_name" name="account_name" placeholder="My budget for February..." />
+                        <Input id="account_name" name="account_name" placeholder="Amirul" />
                         </div>
                     </div>
                     

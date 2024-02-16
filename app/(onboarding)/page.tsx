@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { useRouter } from 'next/navigation';
 
@@ -29,20 +29,26 @@ export default function Onboarding() {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState(0);
   const { pages, buttonText } = onboardingContents[currentPage];
+  const accountName = localStorage.getItem('account_name');
 
-  if (localStorage.getItem('account_name')) router.push('/budget');
+  useEffect(() => {
+    if (accountName) {
+      router.push('/budget', { scroll: false })
+    }
+  }, [accountName, router]);
+
 
   const handleButtonClick = () => {
     if (currentPage < onboardingContents.length - 1) {
       setCurrentPage(currentPage + 1);
     } else {
+      setCurrentPage(0);
       router.push('/get_started')
-      // setCurrentPage(0);
     }
   };
 
   return (
-    <div className="flex flex-col items-center justify-items-center text-center w-full justify-between">
+    <div className="flex flex-col items-center justify-items-center text-center w-full h-screen justify-between">
       <div className="mt-12 w-5/6">
         {pages.map((page, index) => (
             <div key={index} className='space-y-2'>
