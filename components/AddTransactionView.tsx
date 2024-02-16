@@ -19,7 +19,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { toast } from "sonner";
-import cuid from 'cuid';
+import { createId } from '@paralleldrive/cuid2';
 
 function AddTransactionView({
     editTransaction = null,
@@ -59,7 +59,7 @@ function AddTransactionView({
             }
         } else {
             const transaction = {
-                id: cuid(),
+                id: createId(),
                 type: data.get('type'),
                 name: data.get('transaction_name'),
                 amount: formattedAmount,

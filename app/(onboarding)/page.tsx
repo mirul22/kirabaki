@@ -29,21 +29,22 @@ export default function Onboarding() {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState(0);
   const { pages, buttonText } = onboardingContents[currentPage];
-  const accountName = localStorage.getItem('account_name');
 
   useEffect(() => {
-    if (accountName) {
-      router.push('/budget', { scroll: false })
+    if (typeof window !== 'undefined') {
+      const accountName = localStorage.getItem('account_name');
+      if (accountName) {
+        router.push('/budget', { scroll: false });
+      }
     }
-  }, [accountName, router]);
-
+  }, [router]);
 
   const handleButtonClick = () => {
     if (currentPage < onboardingContents.length - 1) {
       setCurrentPage(currentPage + 1);
     } else {
       setCurrentPage(0);
-      router.push('/get_started')
+      router.push('/get_started');
     }
   };
 

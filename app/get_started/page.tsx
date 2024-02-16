@@ -1,7 +1,5 @@
 'use client';
-
-import * as React from "react"
-
+import { useEffect } from 'react';
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -17,31 +15,43 @@ import { useRouter } from 'next/navigation'
 export default function GetStarted() {
     const router = useRouter();
 
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            if (localStorage.getItem('account_name')) {
+                router.push('/budget', { scroll: false });
+            }
+        }
+      }, [router]);
+      
     const handleSubmit = (data: FormData) => {
         if (data.get("account_name") === "") {
             toast.error("Please enter a name for your account");
         } else {
-            localStorage.setItem("account_name", data.get("account_name") as string);
-            router.push('/budget', { scroll: false })
+            if (typeof window !== 'undefined') {
+                localStorage.setItem("account_name", data.get("account_name") as string);
+                router.push('/budget', { scroll: false })
+            }
         }
     };
 
-    if (localStorage.getItem("account_name")) {
-        return (
-            <div className="flex flex-col items-center justify-items-center text-center w-full h-screen justify-between">
-                <div className="mt-12 w-5/6">
-                    <div className='mx-6 my-4 text-2xl text-neutral-200'>
-                        Welcome
-                    </div>
-                    <div className='font-extrabold text-5xl lg:text-6xl leading-tight'>
-                        {localStorage.getItem("account_name")}
-                    </div>
-                    <div className='mx-6 my-4 text-lg text-neutral-200'>
-                        Thanks for using Kirabaki!
+    if (typeof window !== 'undefined') {
+        if (localStorage.getItem("account_name")) {
+            return (
+                <div className="flex flex-col items-center justify-items-center text-center w-full h-screen justify-between">
+                    <div className="mt-12 w-5/6">
+                        <div className='mx-6 my-4 text-2xl text-neutral-200'>
+                            Welcome
+                        </div>
+                        <div className='font-extrabold text-5xl lg:text-6xl leading-tight'>
+                            {localStorage.getItem("account_name")}
+                        </div>
+                        <div className='mx-6 my-4 text-lg text-neutral-200'>
+                            Thanks for using Kirabaki!
+                        </div>
                     </div>
                 </div>
-            </div>
-        )
+            )
+        }
     }
   
     return (
