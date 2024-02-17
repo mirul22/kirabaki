@@ -23,6 +23,7 @@ export default function RootLayout({
       <Head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#0A0A0A"/>
       </Head>
 
       <body className={cn(
