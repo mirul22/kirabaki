@@ -10,6 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Kirabaki",
   description: "Kirabaki is a smart budget companion that helps you unleash financial freedom.",
+  manifest: "/manifest.json",    
 };
 
 export default function RootLayout({

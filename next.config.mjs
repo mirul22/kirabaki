@@ -15,7 +15,7 @@ export default withPWA({
   aggressiveFrontEndNavCaching: true,
   reloadOnOnline: true,
   swcMinify: true,
-  dest: "public",
+  disable: process.env.NODE_ENV === "development",
   fallbacks: {
     document: "/offline", // if you want to fallback to a custom page rather than /_offline
   },
