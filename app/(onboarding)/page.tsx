@@ -9,7 +9,7 @@ const onboardingContents = [
     pages: [
       { title: "Kirabaki", subtitle: "Your smart budget companion", text: "Unleash financial freedom with Kirabaki today!"},
     ],
-    buttonText: "Start",
+    buttonText: "Next",
   },
   {
     pages: [
@@ -19,7 +19,8 @@ const onboardingContents = [
   },
   {
     pages: [
-      { title: "Effortless && Money Management", subtitle: "Easily track your spending and earnings.",  text: "Kirabaki is designed for simplicity, making your financial journey a breeze." },
+      // { title: "Effortless && Money Management", subtitle: "Easily track your spending and earnings.",  text: "Kirabaki is designed for simplicity, making your financial journey a breeze." },
+      { title: "Seamless Offline Experience", subtitle: "Take Control Anytime, Anywhere.",  text: "Kirabaki is designed for simplicity, making your financial journey a breeze." },
     ],
     buttonText: "Let's get started!",
   },
@@ -29,11 +30,13 @@ export default function Onboarding() {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState(0);
   const { pages, buttonText } = onboardingContents[currentPage];
+  const [ isLoading, setIsLoading ] = useState(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const accountName = localStorage.getItem('account_name');
       if (accountName) {
+        setIsLoading(true);
         router.push('/budget', { scroll: false });
       }
     }
@@ -43,10 +46,19 @@ export default function Onboarding() {
     if (currentPage < onboardingContents.length - 1) {
       setCurrentPage(currentPage + 1);
     } else {
+      setIsLoading(true);
       setCurrentPage(0);
       router.push('/get_started');
     }
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-neutral-200"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center justify-items-center text-center h-screen justify-between w-5/6 lg:max-w-screen-sm mx-auto">
