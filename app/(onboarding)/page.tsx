@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 const onboardingContents = [
   {
     pages: [
-      { title: "Kirabaki", subtitle: "Your smart budget companion", text: "Unleash financial freedom with Kirabaki today!"},
+      { title: "Kirabaki", subtitle: "Your simple budget companion", text: "Unleash financial freedom with Kirabaki today!"},
     ],
     buttonText: "Next",
   },
