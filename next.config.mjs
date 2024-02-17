@@ -1,9 +1,13 @@
 
-import withPWA from "@ducanh2912/next-pwa";
+import withPWAInit from "@ducanh2912/next-pwa";
 
 const nextConfig = {
   // ... other options you like
 };
+
+const withPWA = withPWAInit({
+  dest: "public",
+});
 
 // Export using the ES module syntax
 export default withPWA({
