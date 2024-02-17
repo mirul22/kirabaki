@@ -22,12 +22,19 @@ export default function RootLayout({
     <html lang="en">
       <Head>
         {/* Twitter Card meta tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@Mirul22_" />
-        <meta name="twitter:creator" content="@Mirul22_" />
-        <meta name="twitter:title" content="Kirabaki - Your Simple Budget Companion" />
-        <meta name="twitter:description" content="Unleash financial freedom with Kirabaki, your simple budget companion." />
-        <meta name="twitter:image" content="https://kirabaki.vercel.app/kirabaki-512.png" />
+        <meta property="twitter:card" name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:site" name="twitter:site" content="@Mirul22_" />
+        <meta property="twitter:creator" name="twitter:creator" content="@Mirul22_" />
+        <meta property="twitter:title" name="twitter:title" content="Kirabaki - Your Simple Budget Companion" />
+        <meta property="twitter:description" name="twitter:description" content="Unleash financial freedom with Kirabaki, your simple budget companion." />
+        <meta property="twitter:image" name="twitter:image" content="https://kirabaki.vercel.app/kirabaki-512.png" />
+
+        {/* Open Graph meta tags */}
+        <meta property="og:type" name="og:type" content="website" />
+        <meta property="og:url" name="og:url" content="https://kirabaki.vercel.app" />
+        <meta property="og:title" name="og:title" content="Kirabaki - Your Simple Budget Companion" />
+        <meta property="og:description" name="og:description" content="Unleash financial freedom with Kirabaki, your simple budget companion." />
+        <meta property="og:image" name="og:image" content="https://kirabaki.vercel.app/kirabaki-512.png" />
 
         {/* PWA manifest link */}
         <link rel="manifest" href="/manifest.json" />
