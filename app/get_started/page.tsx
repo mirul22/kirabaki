@@ -37,7 +37,7 @@ export default function GetStarted() {
     if (typeof window !== 'undefined') {
         if (localStorage.getItem("account_name")) {
             return (
-                <div className="flex flex-col items-center justify-items-center text-center w-full h-screen justify-between">
+                <div className="flex flex-col items-center justify-items-center text-center w-full justify-between  min-h-screen">
                     <div className="mt-12 w-5/6">
                         <div className='mx-6 my-4 text-2xl text-neutral-200'>
                             Welcome

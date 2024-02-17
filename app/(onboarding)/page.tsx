@@ -54,14 +54,14 @@ export default function Onboarding() {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-screen">
+      <div className="flex items-center justify-center min-h-screen">
         <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-neutral-200"></div>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col items-center justify-items-center text-center h-screen justify-between w-5/6 lg:max-w-screen-sm mx-auto">
+    <div className="flex flex-col items-center justify-items-center text-center justify-between w-5/6 lg:max-w-screen-sm mx-auto min-h-screen">
       <div className="mt-12 w-5/6">
         {pages.map((page, index) => (
             <div key={index} className='space-y-2'>

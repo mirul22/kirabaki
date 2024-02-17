@@ -59,7 +59,7 @@ function TransactionView({ onTransactionAdded }: { onTransactionAdded: () => voi
                     <div className='text-md text-white cursor-pointer hidden group-hover:block opacity-0 group-hover:opacity-100 group-hover:transition-opacity group-hover:ml-5 group-hover:duration-300'>
                         <Pencil size={20} onClick={() => handleEditTransaction(transaction.id)} />
                     </div>
-                    <div className='text-md text-red-500 cursor-pointer hidden group-hover:block opacity-0 group-hover:opacity-100 group-hover:transition-opacity group-hover:ml-1 group-hover:duration-300'>
+                    <div className='text-md text-red-500 cursor-pointer hidden group-hover:block opacity-0 group-hover:opacity-100 group-hover:transition-opacity group-hover:ml-3 group-hover:duration-300'>
                         <Trash size={20} onClick={() => handleDeleteTransaction(transaction.id)} />
                     </div>
                 </div>

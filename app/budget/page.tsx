@@ -2,6 +2,7 @@
 
 import React from 'react'
 import UserView from '@/components/UserView';
+import ResetView from '@/components/ResetView';
 
 export default function page() {
     const date = new Date();
@@ -10,7 +11,8 @@ export default function page() {
 
     return (
         <>
-        <div className='flex flex-col items-center justify-items-center gap-4 w-full'>
+        <div className='flex flex-col items-center justify-items-center gap-4 w-full min-h-screen'>
+            <ResetView />
             <div className='font-bold text-2xl lg:text-3xl leading-tight mt-10'>
                 KIRABAKI
             </div>

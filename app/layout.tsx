@@ -31,7 +31,7 @@ export default function RootLayout({
         "bg-neutral-950 text-slate-100 w-screen h-screen overflow-x-hidden mx-auto",
       )}>
         {children}
-        <Toaster />
+        <Toaster richColors  />
       </body>
     </html>
   );
