@@ -10,7 +10,38 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Kirabaki",
   description: "Kirabaki is a simple budget companion that helps you unleash financial freedom.",
-  manifest: "/manifest.json",    
+  applicationName: "Kirabaki",
+  keywords: ["budget", "companion", "finance", "money", "management"],
+  viewport: "width=device-width, initial-scale=1",
+  manifest: "/manifest.json",   
+  openGraph: {
+    type: "website",
+    url: "https://kirabaki.vercel.app",
+    siteName: "Kirabaki",
+    title: "Kirabaki - Your Simple Budget Companion",
+    description: "Unleash financial freedom with Kirabaki, your simple budget companion.",
+    images: [
+      {
+        url: "https://kirabaki.vercel.app/kirabaki-512.png",
+        width: 512,
+        height: 512,
+        alt: "Kirabaki",
+      },
+    ],
+  }, 
+  twitter: { 
+    card: "summary_large_image", 
+    site: "@Mirul22_", 
+    creator: "@Mirul22_", 
+    title: "Kirabaki - Your Simple Budget Companion",
+    description: "Unleash financial freedom with Kirabaki, your simple budget companion.",
+    images: "https://kirabaki.vercel.app/kirabaki-512.png",
+  },
+  appleWebApp: {
+    title: "Kirabaki",
+    statusBarStyle: "black-translucent",
+    capable: true,
+  },
 };
 
 export default function RootLayout({
@@ -20,31 +51,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
-        {/* Twitter Card meta tags */}
-        <meta property="twitter:card" name="twitter:card" content="summary_large_image" />
-        <meta property="twitter:site" name="twitter:site" content="@Mirul22_" />
-        <meta property="twitter:creator" name="twitter:creator" content="@Mirul22_" />
-        <meta property="twitter:title" name="twitter:title" content="Kirabaki - Your Simple Budget Companion" />
-        <meta property="twitter:description" name="twitter:description" content="Unleash financial freedom with Kirabaki, your simple budget companion." />
-        <meta property="twitter:image" name="twitter:image" content="https://kirabaki.vercel.app/kirabaki-512.png" />
-
-        {/* Open Graph meta tags */}
-        <meta property="og:type" name="og:type" content="website" />
-        <meta property="og:url" name="og:url" content="https://kirabaki.vercel.app" />
-        <meta property="og:title" name="og:title" content="Kirabaki - Your Simple Budget Companion" />
-        <meta property="og:description" name="og:description" content="Unleash financial freedom with Kirabaki, your simple budget companion." />
-        <meta property="og:image" name="og:image" content="https://kirabaki.vercel.app/kirabaki-512.png" />
-
-        {/* PWA manifest link */}
-        <link rel="manifest" href="/manifest.json" />
-
-        {/* Meta tag for viewport */}
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        {/* Add any other head elements you might need */}
-      </Head>
-
       <body className={cn(
         inter.className,
         "bg-neutral-950 text-slate-100 w-screen min-h-screen overflow-x-hidden mx-auto",
