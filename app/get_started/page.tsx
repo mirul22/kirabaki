@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { toast } from "sonner";
 import { useRouter } from 'next/navigation'
+import { track } from '@vercel/analytics';
 
 export default function GetStarted() {
     const router = useRouter();
@@ -28,6 +29,7 @@ export default function GetStarted() {
             toast.error("Please enter a name for your account");
         } else {
             if (typeof window !== 'undefined') {
+                track('Add Account');
                 localStorage.setItem("account_name", data.get("account_name") as string);
                 router.push('/budget', { scroll: false })
             }

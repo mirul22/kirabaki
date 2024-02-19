@@ -1,9 +1,10 @@
+import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Head from "next/head";
-import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -56,6 +57,8 @@ export default function RootLayout({
         "bg-neutral-950 text-slate-100 w-screen min-h-screen overflow-x-hidden mx-auto",
       )}>
         {children}
+        <Analytics />
+        <SpeedInsights />
         <Toaster richColors  />
       </body>
     </html>

@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { useRouter } from 'next/navigation';
+import { track } from '@vercel/analytics';
 
 const onboardingContents = [
   {
@@ -36,6 +37,7 @@ export default function Onboarding() {
     if (typeof window !== 'undefined') {
       const accountName = localStorage.getItem('account_name');
       if (accountName) {
+        track('Return user');
         setIsLoading(true);
         router.push('/budget', { scroll: false });
       }

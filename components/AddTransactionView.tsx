@@ -20,6 +20,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { toast } from "sonner";
 import { createId } from '@paralleldrive/cuid2';
+import { track } from '@vercel/analytics';
 
 function AddTransactionView({
     editTransaction = null,
@@ -64,6 +65,7 @@ function AddTransactionView({
                 setOpen(false);
                 onTransactionAdded();
                 toast.success('Transaction updated successfully');
+                track('Add Transaction');
             }
         } else {
             const transaction = {
@@ -78,6 +80,7 @@ function AddTransactionView({
             setOpen(false);
             onTransactionAdded();
             toast.success('Transaction added successfully');
+            track('Add Transaction');
         }
 
         setTransactionId('');
