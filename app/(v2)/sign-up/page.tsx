@@ -16,7 +16,7 @@ export default async function SignUpPage() {
       <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-kb-seal">Kirabaki</p>
       <h1 className="mt-6 text-4xl font-extrabold tracking-tight">Create your account</h1>
       <p className="mt-3 text-base text-kb-muted">
-        We’ll set up a personal workspace for you.
+        Add a workspace name and currency. You can change these later.
       </p>
       <AuthForm mode="sign-up" />
       <p className="mt-8 text-sm text-kb-muted">

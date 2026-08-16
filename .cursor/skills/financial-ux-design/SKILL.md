@@ -51,6 +51,8 @@ Write like a calm professional. Not a pitch deck. Not a model talking about itse
 
 Those lines belong in docs. On screen, say the useful thing in plain language.
 
+Do not show a primary action that does nothing. If nothing changed, hide Save — do not leave a dead button.
+
 ## Never shame
 
 | Never | Prefer |

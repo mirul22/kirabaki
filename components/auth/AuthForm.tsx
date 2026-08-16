@@ -2,6 +2,8 @@
 
 import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import { updateWorkspaceAction } from "@/app/(v2)/actions";
+import { CurrencySelect } from "@/components/workspace/CurrencySelect";
 import { authClient } from "@/lib/auth/client";
 import { signInSchema, signUpSchema } from "@/lib/auth/schemas";
 
@@ -33,6 +35,8 @@ export function AuthForm({ mode }: { mode: Mode }) {
       name: String(formData.get("name") ?? ""),
       email: String(formData.get("email") ?? ""),
       password: String(formData.get("password") ?? ""),
+      workspaceName: String(formData.get("workspaceName") ?? ""),
+      currency: String(formData.get("currency") ?? "MYR"),
     };
 
     try {
@@ -42,11 +46,20 @@ export function AuthForm({ mode }: { mode: Mode }) {
           setError(parsed.error.issues[0]?.message ?? "Check what you entered.");
           return;
         }
-        const result = await authClient.signUp.email(parsed.data);
+        const result = await authClient.signUp.email({
+          name: parsed.data.name,
+          email: parsed.data.email,
+          password: parsed.data.password,
+        });
         if (result.error) {
           setError(publicAuthMessage(result.error.message ?? ""));
           return;
         }
+
+        const settings = new FormData();
+        settings.set("name", parsed.data.workspaceName);
+        settings.set("currency", parsed.data.currency);
+        await updateWorkspaceAction(settings).catch(() => undefined);
       } else {
         const parsed = signInSchema.safeParse(raw);
         if (!parsed.success) {
@@ -102,6 +115,21 @@ export function AuthForm({ mode }: { mode: Mode }) {
           className="mt-2 h-12 w-full rounded-xl border border-kb-sand bg-white/60 px-4 text-base text-kb-ink outline-none focus:border-kb-seal"
         />
       </label>
+
+      {mode === "sign-up" ? (
+        <>
+          <label className="block">
+            <span className="text-sm text-kb-muted">Workspace name</span>
+            <input
+              name="workspaceName"
+              required
+              maxLength={80}
+              className="mt-2 h-12 w-full rounded-xl border border-kb-sand bg-white/60 px-4 text-base text-kb-ink outline-none focus:border-kb-seal"
+            />
+          </label>
+          <CurrencySelect />
+        </>
+      ) : null}
 
       {error ? <p className="text-sm text-kb-seal">{error}</p> : null}
 
