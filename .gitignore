@@ -18,16 +18,22 @@
 
 # misc
 .DS_Store
+Thumbs.db
+Desktop.ini
 *.pem
+*.p12
+*.key
 
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*.log
 
-# local env files
+# secrets and local env — never commit these
 .env
-.env*.local
+.env.*
+!.env.example
 
 # vercel
 .vercel
