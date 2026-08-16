@@ -19,6 +19,8 @@ Full spec: `docs/UX-AND-BRAND.md`. Locked look: `docs/ux-mockups/IDENTITY.md` (D
 - No primary Ask AI tab. AI is embedded. Never advertise `KIRABAKI AI™`.
 - Mobile-first, touch-first, no hover-only actions. Desktop may breathe sideways — not a dashboard.
 - Progressive disclosure on Money. “The list can wait.” No spreadsheet-first UI.
+- After a place exists, **In/Out is the highlight**. Places fold into a quiet summary. Do not stack wallet cards above the month form.
+- Icons: Lucide strokes already in the repo. Seal or muted. Labeled. No new pack, no cartoon, no emoji.
 - Learn: 60–180s, tied to user data.
 - Momentum (not XP). Streaks = meaningful actions, not app opens. Out of M1 scope.
 - Presence: path + seal-dot only. Not a mascot. Not Duo. Not on every surface.
@@ -48,6 +50,7 @@ Write like a calm professional. Not a pitch deck. Not a model talking about itse
 - Engineering: slice, engine, prototype, tenant, workspaceId
 - Thesis dumps of the full company promise
 - Cute/AI phrasing: “What should we call you?”, “One moment…”, “start your picture”, “left the picture”
+- Roadmap on screen: “not in this version”, “for now”, “more later”, “we’ll add password next”
 
 Those lines belong in docs. On screen, say the useful thing in plain language.
 

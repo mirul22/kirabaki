@@ -1,0 +1,23 @@
+---
+description: Recheck skills/docs/moat, then lint, test, build, and smoke before calling work done
+alwaysApply: true
+---
+
+# Ship quality
+
+Before implementing: re-read the skills, rules, moat, and docs that apply. If the request is not aligned, **stop and ask**.
+
+After implementing: iterate until one next step is obvious, then prove it.
+
+```bash
+npm test
+npm run lint
+npm run typecheck
+npm run build
+```
+
+Then smoke the changed screens. `npm run check` is the fast lint+test+typecheck loop — still build and smoke before you stop.
+
+After a user-facing phase, the last message must include a founder retest script: already proven, numbered clicks, expected screens, not-yet, and when we can move on.
+
+Do not add a dependency, cartoon icons, or a Year-1 ban to “make it nicer.” Lucide strokes already in the repo are the icon language. See skill `kirabaki-ship-quality`.

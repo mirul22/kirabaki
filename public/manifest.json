@@ -1,50 +1,31 @@
-
-{ 
-  "name": "Kirabaki",
-  "short_name": "Kirabaki",
-  "description": "Kirabaki is a simple budget companion that helps you unleash financial freedom.",
-  "theme_color": "#0A0A0A",
-  "background_color": "#0A0A0A", 
-  "display": "standalone", 
-  "orientation": "portrait", 
-  "scope": "/", 
-  "start_url": "/", 
-  "icons": [ 
-    { 
-      "src": "/kirabaki.png", 
-      "type": "image/png", 
-      "sizes": "240x240" 
-    },
-    { 
-      "src": "/kirabaki-64.png", 
-      "type": "image/png", 
-      "sizes": "64x64" 
-    },
-    { 
-      "src": "/kirabaki-196.png", 
-      "type": "image/png", 
-      "sizes": "196x196" 
-    },
-    { 
-      "src": "/kirabaki-256.png", 
-      "type": "image/png", 
-      "sizes": "256x256" 
-    },
-    { 
-      "src": "/kirabaki-512.png", 
-      "type": "image/png", 
-      "sizes": "512x512" 
-    },
-    { 
-      "src": "/kirabaki-1024.png", 
-      "type": "image/png", 
-      "sizes": "1024x1024" 
+{
+  "name": "KIRABAKI",
+  "short_name": "KIRABAKI",
+  "description": "What’s happening with your money, why it matters, and what to do next.",
+  "theme_color": "#F7EFE4",
+  "background_color": "#F7EFE4",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/home",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
     },
     {
-      "src": "/kirabaki-196.png",
-      "sizes": "196x196",
+      "src": "/kirabaki-192.png",
       "type": "image/png",
-      "purpose": "maskable"
-    }  
-  ] 
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/kirabaki-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ]
 }

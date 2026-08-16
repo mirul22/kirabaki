@@ -20,13 +20,17 @@ export const metadata: Metadata = {
   description: "Your financial intelligence system. What’s happening with your money, why it matters, and what to do next.",
   applicationName: "KIRABAKI",
   keywords: ["financial intelligence", "money", "journey", "malaysia"],
-  manifest: "/manifest.json", 
+  manifest: "/manifest.json",
+  icons: {
+    icon: "/icon.svg",
+    apple: "/kirabaki-192.png",
+  }, 
   openGraph: {
     type: "website",
     url: "https://kirabaki.vercel.app",
-    siteName: "Kirabaki",
-    title: "Kirabaki - Your Simple Budget Companion",
-    description: "Unleash financial freedom with Kirabaki, your simple budget companion.",
+    siteName: "KIRABAKI",
+    title: "KIRABAKI",
+    description: "What’s happening with your money, why it matters, and what to do next.",
     images: [
       {
         url: "https://kirabaki.vercel.app/kirabaki-512.png",
@@ -40,13 +44,13 @@ export const metadata: Metadata = {
     card: "summary_large_image", 
     site: "@Mirul22_", 
     creator: "@Mirul22_", 
-    title: "Kirabaki - Your Simple Budget Companion",
-    description: "Unleash financial freedom with Kirabaki, your simple budget companion.",
+    title: "KIRABAKI",
+    description: "What’s happening with your money, why it matters, and what to do next.",
     images: "https://kirabaki.vercel.app/kirabaki-512.png",
   },
   appleWebApp: {
-    title: "Kirabaki",
-    statusBarStyle: "black-translucent",
+    title: "KIRABAKI",
+    statusBarStyle: "default",
     capable: true,
   },
 };

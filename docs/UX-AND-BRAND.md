@@ -106,6 +106,8 @@ Not a blog. Not a textbook. Goal: learn something useful in 60–180 seconds.
 
 Approachable progressive disclosure. Simple answer first; tables only when the user asks for detail. No dense financial tables as the default.
 
+After one place exists, **this month (in / out)** is the primary surface. Places sit in a fold — the list can wait. Icon-only actions use quiet Lucide strokes (not cartoon, not a new pack).
+
 ## You
 
 Human, not an enterprise settings dump. Profile, financial identity, goals, preferences, commitments, progress, privacy, export/delete.

@@ -11,6 +11,7 @@ alwaysApply: true
 - No business logic in React components. No DB queries in presentation.
 - Money math lives in `lib/money` as pure functions with tests.
 - Prefer small milestones. Do not implement the whole company in one PR.
+- After a change: `npm test`, `npm run lint`, `npm run typecheck`, `npm run build`, then smoke the screen. See `.cursor/rules/ship-quality.mdc`.
 - Do not add dependencies without a clear reason.
 - Do not use fake calculations in production paths.
 - Do not hardcode user-specific financial assumptions.

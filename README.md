@@ -22,8 +22,8 @@ Start with [docs/THESIS.md](./docs/THESIS.md). Experience: [docs/UX-AND-BRAND.md
 | --- | --- |
 | Phase 0 docs | Done |
 | Design System v0.8 | Locked — cream + charcoal + coral |
-| Running app | Next.js 16 + React 19 PWA; v2 auth/workspace live; `/budget` is still the v1 list |
-| Milestone 1 (SaaS + Brain + Journey) | Slice 1 in progress — auth + workspace |
+| Running app | Next.js 16 + React 19 PWA; Journey / Money / Find / Learn / You |
+| Milestone 1 (SaaS + Brain + Journey) | Loop in product — money, goals, rules, Next Move |
 
 v2 direction: **SaaS from day 1** (Auth + Postgres + Drizzle + workspaces), **PWA from day 1**, **Journey-first UX** (not a banking dashboard). No native apps until MVP is proven.
 
