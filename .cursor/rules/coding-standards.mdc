@@ -1,0 +1,18 @@
+---
+description: KIRABAKI TypeScript, Zod, Server Actions, no business logic in UI
+alwaysApply: true
+---
+
+# Coding standards
+
+- TypeScript **strict**. No `any` at money or auth boundaries.
+- **Zod** at every system boundary (forms, Server Actions, API, AI structured output).
+- Mutations via Server Actions; API routes only when needed.
+- No business logic in React components. No DB queries in presentation.
+- Money math lives in `lib/money` as pure functions with tests.
+- Prefer small milestones. Do not implement the whole company in one PR.
+- Do not add dependencies without a clear reason.
+- Do not use fake calculations in production paths.
+- Do not hardcode user-specific financial assumptions.
+- Follow existing shadcn / Tailwind patterns once a design direction is locked (`docs/UX-AND-BRAND.md`).
+- Centralize visual values as design tokens — do not scatter magic colors per component after the design system exists.

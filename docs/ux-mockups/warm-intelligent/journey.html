@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#F7EFE4" />
+  <title>Journey — KIRABAKI</title>
+  <link rel="stylesheet" href="tokens.css" />
+</head>
+<body class="app-body">
+  <div class="app-shell">
+    <div class="preview-banner">
+      <span>PREVIEW · ENGINE WOULD SUPPLY THIS</span>
+      <div class="preview-states" role="group" aria-label="Preview states">
+        <button type="button" data-state="filled" aria-pressed="true">Filled</button>
+        <button type="button" data-state="empty" aria-pressed="false">Empty</button>
+        <button type="button" data-state="success" aria-pressed="false">After Next Move</button>
+      </div>
+    </div>
+
+    <main id="state-filled" class="page stack">
+      <div class="top-row">
+        <div>
+          <p class="wordmark"><b>Kirabaki</b><span>financial intelligence</span></p>
+          <p class="when">Sunday afternoon</p>
+          <h1 class="greeting">Hey, Amirul.</h1>
+        </div>
+        <svg class="mark" viewBox="0 0 40 40" aria-hidden="true">
+          <path d="M6 30c6-1 8-10 14-10s7 8 14 6" fill="none" stroke="#16141A" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="34" cy="25" r="3" fill="#E04A30"/>
+        </svg>
+      </div>
+
+      <p class="lede">The emergency fund grew. That’s why this month feels <em class="health">stronger</em> — not because a score moved.</p>
+
+      <section aria-label="Your path">
+        <p class="section-kicker">On the path</p>
+        <svg class="path-svg" viewBox="0 0 340 72" role="img" aria-label="Path: foundation done, emergency fund now">
+          <path d="M8 48 C 70 48, 90 22, 150 28 S 210 58, 250 40 S 300 22, 332 26" fill="none" stroke="#EADFD2" stroke-width="2.2"/>
+          <path d="M8 48 C 70 48, 90 22, 150 28 S 175 42, 188 40" fill="none" stroke="#E04A30" stroke-width="2.2"/>
+          <circle cx="10" cy="48" r="3.5" fill="#E04A30"/>
+          <circle cx="188" cy="40" r="6" fill="#E04A30"/>
+          <circle cx="250" cy="40" r="3" fill="#E4D8C8"/>
+          <circle cx="330" cy="26" r="3" fill="#E4D8C8"/>
+        </svg>
+        <div class="path-labels">
+          <span>Foundation</span>
+          <span class="now">Emergency</span>
+          <span>Stability</span>
+          <span>Further</span>
+        </div>
+      </section>
+
+      <section class="move" aria-labelledby="next-move-title">
+        <p class="section-kicker">
+          <svg viewBox="0 0 28 12" aria-hidden="true"><path d="M1 8c5-1 7-5 13-5s6 5 11 3" fill="none" stroke="#E04A30" stroke-width="1.4" stroke-linecap="round"/><circle cx="25.5" cy="5.8" r="1.8" fill="#E04A30"/></svg>
+          KIRABAKI found
+        </p>
+        <h2 id="next-move-title">Those subscriptions crept up.</h2>
+        <p class="why">Up <span class="num">RM86</span> a month. Leave it and that’s <span class="num">RM1,032</span> this year.</p>
+        <p class="aside">You don’t have to cancel. See if they still earn their keep.</p>
+        <a class="btn btn-primary btn-block" href="find.html" style="margin-top:18px">Take a look</a>
+      </section>
+
+      <section>
+        <div class="goal-head">
+          <p class="section-kicker" style="margin:0">Emergency fund</p>
+          <span class="meta">RM 4,200 / 10,000</span>
+        </div>
+        <div class="goal-bar" role="img" aria-label="About two fifths of the way"><span></span></div>
+        <p class="aside">This pace is fine. Not a race.</p>
+      </section>
+
+      <a class="lesson-link" href="find.html">
+        <p class="section-kicker">Noticed</p>
+        <h3>Subscriptions shifted</h3>
+        <p class="lede">One quiet change. Two minutes, if you want it.</p>
+      </a>
+
+      <a class="lesson-link" href="learn.html">
+        <p class="section-kicker">Ninety seconds</p>
+        <h3>A buffer, not a score</h3>
+        <p class="lede">Why this fund is a pause button — for the one you’re already building.</p>
+      </a>
+    </main>
+
+    <main id="state-empty" class="page empty" hidden inert aria-hidden="true">
+      <p class="when">Begin</p>
+      <h1>Let’s start building your picture.</h1>
+      <p class="lede">Two accounts is enough. No spreadsheet. No performance.</p>
+      <a class="btn btn-primary btn-block" href="money.html" style="margin-top:24px">Add an account</a>
+    </main>
+
+    <main id="state-success" class="page success stack" hidden inert aria-hidden="true">
+      <p class="when">Just now</p>
+      <h1>You looked. That’s the work.</h1>
+      <p class="lede">No gold star. You decided what stays. The picture is a little more honest.</p>
+      <section class="move">
+        <p class="section-kicker">If you want another step</p>
+        <h2>Some of this month stayed put.</h2>
+        <p class="why">About <span class="num">RM1,240</span> after everyday spending. Even a slice moves the fund.</p>
+        <a class="btn btn-primary btn-block" href="money.html" style="margin-top:18px">See the month</a>
+      </section>
+    </main>
+
+    <nav class="tabbar" aria-label="Primary">
+      <a class="tab is-active" href="journey.html" aria-current="page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 16c4-1 6-8 10-8s5 6 8 4" stroke-linecap="round"/><circle cx="21" cy="11.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+        Journey
+      </a>
+      <a class="tab" href="money.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="7" width="16" height="11" rx="2.5"/><path d="M4 11h16"/></svg>
+        Money
+      </a>
+      <a class="tab" href="find.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="6"/><path d="M15.5 15.5 20 20" stroke-linecap="round"/></svg>
+        Find
+      </a>
+      <a class="tab" href="learn.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 8h12M6 12h9M6 16h6" stroke-linecap="round"/></svg>
+        Learn
+      </a>
+      <a class="tab" href="you.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="9" r="2.6"/><path d="M6.5 18.5c1.1-2.6 3-3.8 5.5-3.8s4.4 1.2 5.5 3.8" stroke-linecap="round"/></svg>
+        You
+      </a>
+    </nav>
+  </div>
+
+  <script>
+    const mains = {
+      filled: document.getElementById("state-filled"),
+      empty: document.getElementById("state-empty"),
+      success: document.getElementById("state-success"),
+    };
+    const buttons = document.querySelectorAll(".preview-states button");
+    function show(state) {
+      Object.entries(mains).forEach(([key, el]) => {
+        const off = key !== state;
+        el.hidden = off;
+        el.inert = off;
+        el.setAttribute("aria-hidden", off ? "true" : "false");
+      });
+      buttons.forEach((btn) => {
+        btn.setAttribute("aria-pressed", btn.dataset.state === state ? "true" : "false");
+      });
+    }
+    buttons.forEach((btn) => btn.addEventListener("click", () => show(btn.dataset.state)));
+  </script>
+</body>
+</html>

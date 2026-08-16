@@ -1,0 +1,26 @@
+---
+description: KIRABAKI modular monolith, 4-layer Brain, domain boundaries
+alwaysApply: true
+---
+
+# Architecture
+
+KIRABAKI is a **modular monolith**. No microservices. No custom LLM. No vector DB until retrieval is proven slow.
+
+- `app/` — routes and layouts only
+- `domains/` — identity, finance, accounts, transactions, assets, liabilities, goals, knowledge, rules, analysis, recommendations, commitments, outcomes, snapshots, ai, audit
+- `tax/`, `receipts/`, `business/` — stub until those phases
+- `lib/money` — deterministic calculations only (pure, tested)
+- `lib/db`, `lib/auth` — persistence and Better Auth
+- `ai/prompts/` — versioned prompts when an LLM exists
+
+**Four-layer Brain (never violate):**
+
+1. Deterministic engine — balances, cashflow, net worth, projections = code
+2. Versioned rules — inspectable if/then, not hidden in prompts
+3. Knowledge — structured principles with provenance (not PDF dumps)
+4. LLM — explain and synthesise only; never invent numbers or override Layer 1
+
+UI never owns formulas. Presentation never queries the DB. Domain logic is independently testable.
+
+Postgres is the system of record. PWA is the client. See `docs/ARCHITECTURE.md` and `docs/PLATFORM-AND-SCALE.md`.

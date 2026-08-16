@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#F7EFE4" />
+  <title>You — KIRABAKI</title>
+  <link rel="stylesheet" href="tokens.css" />
+</head>
+<body class="app-body">
+  <div class="app-shell">
+    <div class="preview-banner">
+      <span>Preview data — engine would supply this</span>
+    </div>
+
+    <main class="page stack">
+      <div class="top-row">
+        <div>
+          <p class="when">You</p>
+          <h1 class="greeting">Amirul</h1>
+          <p class="lede" style="margin-top:6px">Personal, Malaysia</p>
+        </div>
+        <div class="avatar" aria-hidden="true">A</div>
+      </div>
+
+      <section>
+        <p class="section-kicker">Right now</p>
+        <button class="row-link" type="button">Main goal <span>Emergency fund</span></button>
+        <button class="row-link" type="button">The path <span>Getting stronger</span></button>
+        <button class="row-link" type="button">Weekly look <span>Sundays</span></button>
+      </section>
+
+      <section>
+        <p class="section-kicker">How this talks</p>
+        <button class="row-link" type="button">Language <span>English</span></button>
+        <button class="row-link" type="button">Nudges <span>Few, and quiet</span></button>
+      </section>
+
+      <section>
+        <p class="section-kicker">Your data</p>
+        <p class="lede" style="font-size:0.95rem;margin:4px 0 8px">The journey is remembered so next month is less generic. You can take a copy, or leave.</p>
+        <button class="row-link" type="button" id="export-btn">Export <span>A copy</span></button>
+        <button class="row-link" type="button" data-open-sheet>Delete <span>This workspace</span></button>
+      </section>
+
+      <p class="meta" id="export-note" hidden>Preview only — export ships with Milestone 1.</p>
+    </main>
+
+    <div class="sheet-root" id="delete-sheet" hidden inert>
+      <div class="sheet-backdrop" data-close-sheet></div>
+      <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="delete-title">
+        <p class="when">Leaving</p>
+        <h2 id="delete-title">Delete this workspace?</h2>
+        <p class="lede">That would erase the picture so far. Preview only — nothing is deleted here.</p>
+        <button class="btn btn-danger-quiet btn-block" type="button" data-close-sheet style="margin-top:20px">Understood — not in this preview</button>
+        <button class="btn btn-secondary btn-block" type="button" data-close-sheet style="margin-top:10px">Keep it</button>
+      </div>
+    </div>
+
+    <nav class="tabbar" aria-label="Primary">
+      <a class="tab" href="journey.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 16c3-6 5-2 8-7s4 1 8-5" stroke-linecap="round"/><circle cx="20" cy="4" r="1.6" fill="currentColor"/></svg>
+        Journey
+      </a>
+      <a class="tab" href="money.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="4" y="7" width="16" height="11" rx="3"/><path d="M4 11h16"/></svg>
+        Money
+      </a>
+      <a class="tab" href="find.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4" stroke-linecap="round"/></svg>
+        Find
+      </a>
+      <a class="tab" href="learn.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M5 7h14M5 12h10M5 17h8" stroke-linecap="round"/></svg>
+        Learn
+      </a>
+      <a class="tab is-active" href="you.html" aria-current="page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="9" r="3"/><path d="M6 19c1.2-3 3.2-4.4 6-4.4s4.8 1.4 6 4.4" stroke-linecap="round"/></svg>
+        You
+      </a>
+    </nav>
+  </div>
+
+  <script>
+    const sheet = document.getElementById("delete-sheet");
+    document.querySelectorAll("[data-open-sheet]").forEach((el) => {
+      el.addEventListener("click", () => { sheet.hidden = false; sheet.inert = false; });
+    });
+    document.querySelectorAll("[data-close-sheet]").forEach((el) => {
+      el.addEventListener("click", () => { sheet.hidden = true; sheet.inert = true; });
+    });
+    document.getElementById("export-btn").addEventListener("click", () => {
+      document.getElementById("export-note").hidden = false;
+    });
+  </script>
+</body>
+</html>

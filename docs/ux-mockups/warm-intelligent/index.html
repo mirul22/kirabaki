@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#E2DDD4" />
+  <title>KIRABAKI — identity mockups</title>
+  <link rel="stylesheet" href="tokens.css" />
+</head>
+<body class="studio-body">
+  <div class="studio">
+    <section class="studio-copy">
+      <p class="when">Design System v0.8 · locked</p>
+      <h1>Refine. Don’t restyle.</h1>
+      <p>Cream, charcoal, coral. Inter. Path + seal-dot. Human voice. Next work is personality and loops — not a new look.</p>
+      <p style="margin-top:10px"><a href="../IDENTITY.md">IDENTITY.md</a></p>
+
+      <div class="screen-links" role="navigation" aria-label="Mockup screens">
+        <button type="button" class="is-on" data-src="journey.html">Journey</button>
+        <button type="button" data-src="money.html">Money</button>
+        <button type="button" data-src="find.html">Find</button>
+        <button type="button" data-src="learn.html">Learn</button>
+        <button type="button" data-src="you.html">You</button>
+        <a href="journey.html">Journey full page</a>
+        <a href="money.html">Money</a>
+        <a href="find.html">Find</a>
+        <a href="learn.html">Learn</a>
+        <a href="you.html">You</a>
+      </div>
+
+      <h2 class="section-kicker">Protect</h2>
+      <ul class="quality">
+        <li>A buffer, not a score. The list can wait. None of them a warning.</li>
+        <li>Alive, not colorful. No mascot, confetti, or new palette.</li>
+        <li>Next Move is discovery — KIRABAKI found — not an alert.</li>
+      </ul>
+
+      <p class="meta" style="margin-top:20px"><a href="../FIRST-RETURN.md">FIRST-RETURN.md</a> — tokens stay here until you confirm.</p>
+    </section>
+
+    <div class="device-wrap">
+      <div class="device">
+        <iframe id="phone" title="KIRABAKI phone preview" src="journey.html"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const frame = document.getElementById("phone");
+    const buttons = document.querySelectorAll(".screen-links button");
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        frame.src = btn.dataset.src;
+        buttons.forEach((b) => b.classList.toggle("is-on", b === btn));
+      });
+    });
+  </script>
+</body>
+</html>

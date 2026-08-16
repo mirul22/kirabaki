@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#F7EFE4" />
+  <title>Learn — KIRABAKI</title>
+  <link rel="stylesheet" href="tokens.css" />
+</head>
+<body class="app-body">
+  <div class="app-shell">
+    <div class="preview-banner">
+      <span>Preview data — engine would supply this</span>
+    </div>
+
+    <main class="page">
+      <p class="when">About ninety seconds</p>
+      <div class="lesson-progress" aria-label="Lesson progress">
+        <i class="is-on" id="p1"></i>
+        <i id="p2"></i>
+        <i id="p3"></i>
+      </div>
+
+      <section class="lesson-body" id="step-1">
+        <h1>A buffer, not a score.</h1>
+        <p class="lede">An emergency fund is a pause button. It is not a grade, and it is not proof you are “good with money.”</p>
+        <p class="lede" style="margin-top:14px">You’re already building one. That’s the only reason this page exists.</p>
+        <button class="btn btn-primary btn-block" type="button" style="margin-top:28px" data-next="2">Keep going</button>
+      </section>
+
+      <section class="lesson-body" id="step-2" hidden>
+        <h1>Why this, for you.</h1>
+        <p class="lede">You’re on the emergency-fund stretch of the path. A common picture is a few months of everyday spending, sitting somewhere reachable — not invested, not optimized.</p>
+        <p class="lede" style="margin-top:14px">Later, KIRABAKI will use your real expenses. Treat any target as a direction.</p>
+        <button class="btn btn-primary btn-block" type="button" style="margin-top:28px" data-next="3">One question</button>
+      </section>
+
+      <section class="lesson-body" id="step-3" hidden>
+        <h1>What’s the fund mainly for?</h1>
+        <button class="choice" type="button" data-choice="right">A surprise cost, without scrambling</button>
+        <button class="choice" type="button" data-choice="other">Growing wealth as fast as possible</button>
+        <p class="lede" id="choice-note" hidden style="margin:8px 0 16px"></p>
+        <a class="btn btn-primary btn-block" href="journey.html" id="got-it" hidden>Back to the path</a>
+      </section>
+    </main>
+
+    <nav class="tabbar" aria-label="Primary">
+      <a class="tab" href="journey.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 16c3-6 5-2 8-7s4 1 8-5" stroke-linecap="round"/><circle cx="20" cy="4" r="1.6" fill="currentColor"/></svg>
+        Journey
+      </a>
+      <a class="tab" href="money.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="4" y="7" width="16" height="11" rx="3"/><path d="M4 11h16"/></svg>
+        Money
+      </a>
+      <a class="tab" href="find.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4" stroke-linecap="round"/></svg>
+        Find
+      </a>
+      <a class="tab is-active" href="learn.html" aria-current="page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M5 7h14M5 12h10M5 17h8" stroke-linecap="round"/></svg>
+        Learn
+      </a>
+      <a class="tab" href="you.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="9" r="3"/><path d="M6 19c1.2-3 3.2-4.4 6-4.4s4.8 1.4 6 4.4" stroke-linecap="round"/></svg>
+        You
+      </a>
+    </nav>
+  </div>
+
+  <script>
+    const steps = [1, 2, 3].map((n) => document.getElementById("step-" + n));
+    const pips = [1, 2, 3].map((n) => document.getElementById("p" + n));
+
+    function go(n) {
+      steps.forEach((el, i) => { el.hidden = i !== n - 1; });
+      pips.forEach((el, i) => { el.classList.toggle("is-on", i < n); });
+    }
+
+    document.querySelectorAll("[data-next]").forEach((btn) => {
+      btn.addEventListener("click", () => go(Number(btn.dataset.next)));
+    });
+
+    const note = document.getElementById("choice-note");
+    const gotIt = document.getElementById("got-it");
+    document.querySelectorAll("[data-choice]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("[data-choice]").forEach((b) => {
+          b.setAttribute("aria-pressed", "false");
+          b.classList.remove("is-right");
+        });
+        btn.setAttribute("aria-pressed", "true");
+        const right = btn.dataset.choice === "right";
+        if (right) btn.classList.add("is-right");
+        note.hidden = false;
+        note.textContent = right
+          ? "Yes. So a surprise doesn’t become a spiral."
+          : "Growth can wait. This pot is for breathing room.";
+        gotIt.hidden = false;
+      });
+    });
+  </script>
+</body>
+</html>
