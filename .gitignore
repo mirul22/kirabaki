@@ -47,3 +47,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Next.js generated agent rule files
+/AGENTS.md
+/CLAUDE.md

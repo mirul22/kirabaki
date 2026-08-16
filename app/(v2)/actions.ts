@@ -10,7 +10,7 @@ import { getCurrentSession } from "@/lib/auth/session";
 
 export async function signOutAction() {
   await auth.api.signOut({
-    headers: headers(),
+    headers: await headers(),
   });
   redirect("/");
 }

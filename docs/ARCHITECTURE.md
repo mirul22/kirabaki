@@ -13,7 +13,7 @@
 
 | Layer | Choice | Notes |
 | --- | --- | --- |
-| Frontend | Next.js App Router, TypeScript strict, Tailwind, shadcn/ui | Reuse UI primitives from v1 |
+| Frontend | Next.js 16 + React 19, TypeScript strict, Tailwind 3, shadcn/ui | Reuse UI primitives from v1 |
 | Backend | Server Actions; API routes when needed | Same app |
 | Database | PostgreSQL + Drizzle ORM | Neon free tier hosted; Docker Postgres locally |
 | Auth | Better Auth + Drizzle adapter | Self-hosted; no Clerk lock-in |
@@ -21,7 +21,7 @@
 | Money math | Pure functions in `lib/money` | Never in React components |
 | AI | `AIProvider` interface later | **No LLM in M1** by default; template explanations from rules |
 | Storage / jobs | Interfaces only until Tax/OCR | No S3/OCR yet |
-| Client | **PWA from day 1** | Phone product until MVP proven |
+| Client | **PWA from day 1** (`@serwist/next`) | Phone product until MVP proven |
 | Hosting | Vercel | Analytics events only — never balances/goals |
 
 ## SaaS + PWA contract
