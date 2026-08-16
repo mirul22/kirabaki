@@ -1,6 +1,6 @@
 # Milestone 1 — Build Brief
 
-**Status:** Approved. Design System v0.8 is locked ([UX-AND-BRAND.md](./UX-AND-BRAND.md), [ux-mockups/IDENTITY.md](./ux-mockups/IDENTITY.md)). Implement in the coding-slice order below — do not build the whole brief in one pass.
+**Status:** In the five-tab PWA. Living board: [STATUS.md](./STATUS.md). Design System v0.8 is locked ([UX-AND-BRAND.md](./UX-AND-BRAND.md), [ux-mockups/IDENTITY.md](./ux-mockups/IDENTITY.md)). Do not build the whole company in one pass.
 
 Objective: prove the core financial intelligence loop with real founder data.
 
@@ -83,12 +83,12 @@ If any of these are missing, do not move to the next milestone.
 
 Work in small prompts — do not build the company in one pass:
 
-1. Domain schema (Drizzle) + auth + workspace — **in progress** (identity, personal workspace, tenant helper)
-2. Goals
-3. Deterministic financial engine (`lib/money`) + tests
-4. Knowledge + Rules
-5. Recommendation engine + evidence
-6. Journey home + PWA baseline (after design direction is chosen)
+1. Domain schema (Drizzle) + auth + workspace — **done**
+2. Goals — **done**
+3. Deterministic financial engine (`lib/money`) + tests — **done**
+4. Knowledge + Rules — **done** (seeded catalog; no authoring UI)
+5. Recommendation engine + evidence — **done**
+6. Journey home + PWA baseline — **done**
 
 ## Knowledge seeding
 
@@ -102,6 +102,7 @@ Founder writes 8–15 paraphrased principles with citations. No copyrighted PDF 
 
 ## Related docs
 
+- [STATUS.md](./STATUS.md)
 - [THESIS.md](./THESIS.md)
 - [UX-AND-BRAND.md](./UX-AND-BRAND.md)
 - [ARCHITECTURE.md](./ARCHITECTURE.md)

@@ -7,6 +7,9 @@ import { buttonClass, fieldClass, ghostButtonClass } from "@/components/app/fiel
 export function FocusForm({ defaultFocus }: { defaultFocus: string }) {
   const [error, setError] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
+  const [value, setValue] = useState(defaultFocus);
+  const [savedFocus, setSavedFocus] = useState(defaultFocus);
+  const dirty = value.trim() !== savedFocus.trim();
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -17,6 +20,7 @@ export function FocusForm({ defaultFocus }: { defaultFocus: string }) {
       setError(result.error);
       return;
     }
+    setSavedFocus(value.trim());
     setSaved(true);
   }
 
@@ -26,15 +30,21 @@ export function FocusForm({ defaultFocus }: { defaultFocus: string }) {
       <input
         name="focus"
         maxLength={160}
-        defaultValue={defaultFocus}
+        value={value}
         placeholder="A buffer. A quieter month. A home."
         className={fieldClass}
+        onChange={(event) => {
+          setValue(event.target.value);
+          setSaved(false);
+        }}
       />
       {error ? <p className="text-sm text-kb-seal">{error}</p> : null}
-      {saved ? <p className="text-sm text-kb-muted">Saved.</p> : null}
-      <button type="submit" className={buttonClass}>
-        Save
-      </button>
+      {saved && !dirty ? <p className="text-sm text-kb-muted">Saved.</p> : null}
+      {dirty ? (
+        <button type="submit" className={buttonClass}>
+          Save
+        </button>
+      ) : null}
     </form>
   );
 }

@@ -1,5 +1,5 @@
 import { AppChrome } from "@/components/app/AppChrome";
-import { moneyClass } from "@/components/app/fields";
+import { moneyClass, rowClass } from "@/components/app/fields";
 import { afterMoneyChange } from "@/domains/finance/refresh";
 import { getPrinciple, listPrinciples } from "@/domains/knowledge/ensure";
 import { getOpenRecommendation } from "@/domains/recommendations/refresh";
@@ -25,12 +25,11 @@ export default async function LearnPage() {
   const currency = workspace.currency;
   const inCents = picture.cashflow.incomeCents;
   const outCents = picture.cashflow.expenseCents;
-  const maxCents = Math.max(inCents, outCents, 1);
 
   return (
     <AppChrome current="/learn">
       <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-kb-seal">Learn</p>
-      <h1 className="mt-3 text-4xl font-extrabold tracking-tight">
+      <h1 className="mt-4 text-4xl font-extrabold tracking-tight">
         {picture.accounts.length === 0
           ? "After you add a place money sits."
           : lesson
@@ -59,29 +58,19 @@ export default async function LearnPage() {
       ) : null}
 
       {picture.accounts.length > 0 ? (
-        <section className="mt-8 rounded-2xl bg-white/50 px-4 py-4">
-          <p className="text-sm font-semibold text-kb-seal">This month, in numbers</p>
-          <dl className="mt-4 space-y-3 text-sm">
-            <div>
-              <div className="flex justify-between gap-3">
-                <dt>In</dt>
-                <dd className={moneyClass}>{formatMoney(inCents, currency)}</dd>
-              </div>
-              <div className="mt-1 h-2 overflow-hidden rounded-full bg-kb-sand">
-                <div className="h-2 rounded-full bg-kb-seal" style={{ width: `${Math.round((inCents / maxCents) * 100)}%` }} />
-              </div>
+        <section className="mt-12">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-kb-seal">This month</p>
+          <dl className="mt-2">
+            <div className={rowClass}>
+              <dt className="text-kb-muted">In</dt>
+              <dd className={moneyClass}>{formatMoney(inCents, currency)}</dd>
             </div>
-            <div>
-              <div className="flex justify-between gap-3">
-                <dt>Out</dt>
-                <dd className={moneyClass}>{formatMoney(outCents, currency)}</dd>
-              </div>
-              <div className="mt-1 h-2 overflow-hidden rounded-full bg-kb-sand">
-                <div className="h-2 rounded-full bg-kb-muted" style={{ width: `${Math.round((outCents / maxCents) * 100)}%` }} />
-              </div>
+            <div className={rowClass}>
+              <dt className="text-kb-muted">Out</dt>
+              <dd className={moneyClass}>{formatMoney(outCents, currency)}</dd>
             </div>
           </dl>
-          <p className="mt-4 text-sm text-kb-muted">
+          <p className="mt-5 text-base leading-relaxed text-kb-muted">
             {picture.cashflow.savingsRateBps !== null
               ? `You kept ${formatRate(picture.cashflow.savingsRateBps)} of what came in.`
               : "Add pay in, then this can show the gap."}

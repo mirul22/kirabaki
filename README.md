@@ -8,11 +8,11 @@ KIRABAKI understands your financial life, learns from trusted financial knowledg
 
 Not a tracker. Not a ChatGPT wrapper. Not a tax app.
 
-## Docs (Phase 0)
+## Docs
 
-Product thesis, architecture, UX/brand, agent skills, and Milestone 1 brief:
+**Where we are:** [docs/STATUS.md](./docs/STATUS.md)
 
-**→ [docs/README.md](./docs/README.md)**
+Product thesis, architecture, UX/brand, agent skills, and Milestone 1 brief: [docs/README.md](./docs/README.md)
 
 Start with [docs/THESIS.md](./docs/THESIS.md). Experience: [docs/UX-AND-BRAND.md](./docs/UX-AND-BRAND.md). Locked look: [docs/ux-mockups/IDENTITY.md](./docs/ux-mockups/IDENTITY.md).
 
@@ -23,7 +23,7 @@ Start with [docs/THESIS.md](./docs/THESIS.md). Experience: [docs/UX-AND-BRAND.md
 | Phase 0 docs | Done |
 | Design System v0.8 | Locked — cream + charcoal + coral |
 | Running app | Next.js 16 + React 19 PWA; Journey / Money / Find / Learn / You |
-| Milestone 1 (SaaS + Brain + Journey) | Loop in product — money, goals, rules, Next Move |
+| Milestone 1 (SaaS + Brain + Journey) | In the app — see [docs/STATUS.md](./docs/STATUS.md) |
 
 v2 direction: **SaaS from day 1** (Auth + Postgres + Drizzle + workspaces), **PWA from day 1**, **Journey-first UX** (not a banking dashboard). No native apps until MVP is proven.
 
@@ -39,6 +39,20 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000). The v1 localStorage budget list is still at `/budget`.
+
+### Test user (travel story)
+
+Seeds a separate account with ~three months of money, snapshots, and past Next Moves — so you can try the Picture, Find, and outcomes without living in the app for a week.
+
+```bash
+npm run db:seed-tester
+```
+
+Sign in as `hafiz.kirabaki@gmail.com`. Default password is printed by the script (`KirabakiTest1`) unless `TEST_SEED_PASSWORD` is set. This does **not** touch the founder workspace.
+
+```bash
+npm run db:clear-tester
+```
 
 ## Name
 

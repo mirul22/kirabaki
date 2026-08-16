@@ -17,7 +17,7 @@ export function AppChrome({
   children: ReactNode;
 }) {
   return (
-    <div className="mx-auto flex min-h-dvh w-full max-w-md flex-col px-5 pb-24 pt-6">
+    <div className="mx-auto flex min-h-dvh w-full max-w-md flex-col px-6 pb-28 pt-8">
       {children}
       <nav
         className="fixed inset-x-0 bottom-0 z-20 border-t border-white/5 bg-kb-night"

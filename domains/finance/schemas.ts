@@ -1,11 +1,11 @@
 import { z } from "zod";
-import { majorToCents } from "@/lib/money";
+import { parseAmountToCents } from "@/lib/money";
 
 const amountSchema = z
   .string()
   .trim()
-  .regex(/^\d+(\.\d{1,2})?$/, "Enter an amount like 1500 or 12.50.")
-  .transform((value) => majorToCents(Number(value)));
+  .refine((value) => parseAmountToCents(value) !== null, "Enter an amount like 1,000.00.")
+  .transform((value) => parseAmountToCents(value)!);
 
 export const accountSchema = z.object({
   name: z.string().trim().min(1, "Give this a name.").max(80),
@@ -20,6 +20,10 @@ export const transactionSchema = z.object({
   amount: amountSchema,
   occurredOn: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Pick a date."),
   category: z.string().trim().max(40).optional(),
+});
+
+export const updateTransactionSchema = transactionSchema.extend({
+  id: z.string().trim().min(1, "That line is gone."),
 });
 
 export const positionSchema = z.object({

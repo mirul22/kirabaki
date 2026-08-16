@@ -16,10 +16,16 @@ Full spec: `docs/UX-AND-BRAND.md`. Locked look: `docs/ux-mockups/IDENTITY.md` (D
 - Nav: **Journey | Money | Find | Learn | You**
 - Screen jobs: Journey = where am I going? Money = where is my money? Find = what should I know? Learn = what should I understand? You = what am I working toward?
 - Journey is home. One **Next Move**. KIRABAKI FOUND is **discovery**, not alerts. Cue: “KIRABAKI found…”
+- **Find shows the open finding only.** Do not dump old rule titles (“Nothing stayed”, “Add a bank or wallet”) as a list — those read as homework. What they already did lives on Journey.
 - No primary Ask AI tab. AI is embedded. Never advertise `KIRABAKI AI™`.
 - Mobile-first, touch-first, no hover-only actions. Desktop may breathe sideways — not a dashboard.
-- Progressive disclosure on Money. “The list can wait.” No spreadsheet-first UI.
-- After a place exists, **In/Out is the highlight**. Places fold into a quiet summary. Do not stack wallet cards above the month form.
+- Progressive disclosure on Money: the **Picture** is always visible once a place exists — own, owe, net, this month in/out/kept. That is the living statement, not an Excel grid.
+- **Read first.** Hairline statement rows (name left, amount right). The only card that earns a dark fill is Next Move.
+- **Mutations stay behind Edit / Done** (remove, change, star, add own/owe, goal fields). Do not put trash, pencil, or Save on every row in view mode.
+- One next step may stay visible: Next Move, or a single “Add in or out” text on Money. Never a column of icons.
+- Hide Save when nothing changed. `quiet_good` has no Okay button — a quiet link to the picture is enough.
+- Do not hide own/owe in a fold. “No spreadsheet-first UI” means no 40-column grid. It does not mean hide the financial life.
+- After a place exists, a single **Add in or out** text expands the form. The statement stays above.
 - Icons: Lucide strokes already in the repo. Seal or muted. Labeled. No new pack, no cartoon, no emoji.
 - Learn: 60–180s, tied to user data.
 - Momentum (not XP). Streaks = meaningful actions, not app opens. Out of M1 scope.
@@ -68,7 +74,7 @@ Health language: Healthy, Getting stronger, Needs attention, Building momentum, 
 
 ## Visual lock (v0.8)
 
-Warm cream `#F7EFE4` + night `#12141A` + seal `#E04A30`. Discovery card `#2A2420` (warm, not alert-black). Inter everywhere; mono only for amounts.
+Warm cream `#F7EFE4` + night `#12141A` + seal `#E04A30`. Discovery card `#2A2420` (warm, not alert-black). Inter everywhere; mono only for amounts. Amounts always use grouping and two decimals (`1,000.00`, `10,000.00`, `100,000.00`, `1,000,000.00`) in the statement and in forms.
 
 Do **not** add indigo, mint, or purple. Do **not** “make it more fun” with gradients, blobs, confetti, badges, or cartoon Kira.
 

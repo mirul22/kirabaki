@@ -8,3 +8,8 @@ export const ghostButtonClass =
   "h-11 rounded-full border border-kb-sand px-4 text-sm font-semibold";
 
 export const moneyClass = "font-mono tabular-nums";
+
+export const rowClass = "flex items-baseline justify-between gap-4 border-b border-kb-sand/70 py-3.5";
+
+export const summaryClass =
+  "cursor-pointer list-none text-sm font-semibold text-kb-muted [&::-webkit-details-marker]:hidden";

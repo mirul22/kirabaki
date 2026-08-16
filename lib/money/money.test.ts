@@ -2,7 +2,10 @@ import { describe, expect, it } from "vitest";
 import {
   currentBalanceCents,
   emergencyFundMonths,
+  formatAmountComplete,
+  formatAmountTyping,
   formatMoney,
+  parseAmountToCents,
   goalProjection,
   healthLanguage,
   majorToCents,
@@ -144,6 +147,31 @@ describe("copy from facts", () => {
 describe("formatMoney", () => {
   it("prefixes MYR as RM", () => {
     expect(formatMoney(123456, "MYR")).toBe("RM1,234.56");
+  });
+
+  it("groups thousands the same way in every amount", () => {
+    expect(formatMoney(100_000_000, "MYR")).toBe("RM1,000,000.00");
+    expect(formatMoney(10_000_000, "MYR")).toBe("RM100,000.00");
+    expect(formatMoney(1_000_000, "MYR")).toBe("RM10,000.00");
+    expect(formatMoney(100_000, "MYR")).toBe("RM1,000.00");
+  });
+});
+
+describe("amount fields", () => {
+  it("adds commas while typing", () => {
+    expect(formatAmountTyping("1000000")).toBe("1,000,000");
+    expect(formatAmountTyping("1000000.5")).toBe("1,000,000.5");
+  });
+
+  it("completes two decimal places", () => {
+    expect(formatAmountComplete("1000")).toBe("1,000.00");
+    expect(formatAmountComplete("1,000,000")).toBe("1,000,000.00");
+  });
+
+  it("parses grouped amounts back to cents", () => {
+    expect(parseAmountToCents("1,000,000.00")).toBe(100_000_000);
+    expect(parseAmountToCents("1,000.00")).toBe(100_000);
+    expect(parseAmountToCents("24.00")).toBe(2_400);
   });
 });
 

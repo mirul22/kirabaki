@@ -1,11 +1,11 @@
 import { z } from "zod";
-import { majorToCents } from "@/lib/money";
+import { parseAmountToCents } from "@/lib/money";
 
 const amountSchema = z
   .string()
   .trim()
-  .regex(/^\d+(\.\d{1,2})?$/, "Enter an amount like 10000 or 500.00.")
-  .transform((value) => majorToCents(Number(value)));
+  .refine((value) => parseAmountToCents(value) !== null, "Enter an amount like 1,000.00.")
+  .transform((value) => parseAmountToCents(value)!);
 
 export const goalSchema = z.object({
   name: z.string().trim().min(1, "What is this for?").max(80),
