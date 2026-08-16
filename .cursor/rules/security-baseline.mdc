@@ -1,0 +1,20 @@
+---
+description: KIRABAKI tenant isolation, no money in logs, least privilege
+alwaysApply: true
+---
+
+# Security baseline
+
+Financial data is **HIGHLY_SENSITIVE**.
+
+- Every money row is scoped by `workspaceId`. Never query without it. Never leak across tenants.
+- Server-side authorization on every mutation and read.
+- Zod-validate all inputs.
+- **Never** put balances, income, goals, account numbers, or receipts in logs, analytics, or error trackers.
+- Never send more user data to an LLM than the task requires.
+- Secrets only in env / secret manager. No secrets in git or client bundles.
+- Audit who/what/when — no raw secrets or full financial payloads in audit blobs.
+- Export and delete are Day-1 product requirements (implement with Milestone 1).
+- Analytics: product events only (`Return user`, `Add Account`) — never amounts.
+
+See skill `fintech-security-privacy` and `docs/ARCHITECTURE.md`.

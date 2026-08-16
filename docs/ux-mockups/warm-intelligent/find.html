@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#F7EFE4" />
+  <title>Find — KIRABAKI</title>
+  <link rel="stylesheet" href="tokens.css" />
+</head>
+<body class="app-body">
+  <div class="app-shell">
+    <div class="preview-banner">
+      <span>Preview data — engine would supply this</span>
+    </div>
+
+    <main class="page">
+      <p class="when">Noticed this month</p>
+      <h1 class="greeting">Three things. None of them a warning.</h1>
+      <p class="lede" style="margin-top:10px">What changed, and whether it’s worth your time.</p>
+
+      <article class="finding" style="margin-top:28px">
+        <p class="section-kicker">1 · Recurring</p>
+        <h3>Subscriptions went up RM86 a month</h3>
+        <p>That’s RM1,032 a year if nothing changes. Keep them, pause them, or decide later.</p>
+        <button class="btn btn-primary" type="button" style="margin-top:14px" data-open-sheet>Review the three</button>
+      </article>
+
+      <article class="finding">
+        <p class="section-kicker">2 · Quiet good</p>
+        <h3>The emergency fund moved</h3>
+        <p>About RM420 landed there. Not a celebration. Just true.</p>
+      </article>
+
+      <article class="finding">
+        <p class="section-kicker">3 · Incomplete</p>
+        <h3>EPF still isn’t in the picture</h3>
+        <p>Optional. Adding it later makes the path more honest. No rush.</p>
+        <a class="btn btn-secondary" href="money.html" style="margin-top:14px">Add it later</a>
+      </article>
+    </main>
+
+    <div class="sheet-root" id="review-sheet" hidden inert>
+      <div class="sheet-backdrop" data-close-sheet></div>
+      <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+        <p class="when">The three</p>
+        <h2 id="sheet-title">A little higher than last month</h2>
+        <p class="lede">Names are preview only. Keep, pause, or leave it.</p>
+        <div class="account"><div>Streaming bundle<small>Everyday</small></div><div class="num">RM 55</div></div>
+        <div class="account"><div>Cloud storage<small>Work-adjacent</small></div><div class="num">RM 36</div></div>
+        <div class="account"><div>Fitness app<small>Maybe unused</small></div><div class="num">RM 45</div></div>
+        <button class="btn btn-primary btn-block" type="button" data-close-sheet style="margin-top:20px">Done for now</button>
+      </div>
+    </div>
+
+    <nav class="tabbar" aria-label="Primary">
+      <a class="tab" href="journey.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 16c3-6 5-2 8-7s4 1 8-5" stroke-linecap="round"/><circle cx="20" cy="4" r="1.6" fill="currentColor"/></svg>
+        Journey
+      </a>
+      <a class="tab" href="money.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="4" y="7" width="16" height="11" rx="3"/><path d="M4 11h16"/></svg>
+        Money
+      </a>
+      <a class="tab is-active" href="find.html" aria-current="page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4" stroke-linecap="round"/></svg>
+        Find
+      </a>
+      <a class="tab" href="learn.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M5 7h14M5 12h10M5 17h8" stroke-linecap="round"/></svg>
+        Learn
+      </a>
+      <a class="tab" href="you.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="9" r="3"/><path d="M6 19c1.2-3 3.2-4.4 6-4.4s4.8 1.4 6 4.4" stroke-linecap="round"/></svg>
+        You
+      </a>
+    </nav>
+  </div>
+
+  <script>
+    const sheet = document.getElementById("review-sheet");
+    document.querySelectorAll("[data-open-sheet]").forEach((el) => {
+      el.addEventListener("click", () => { sheet.hidden = false; sheet.inert = false; });
+    });
+    document.querySelectorAll("[data-close-sheet]").forEach((el) => {
+      el.addEventListener("click", () => { sheet.hidden = true; sheet.inert = true; });
+    });
+  </script>
+</body>
+</html>

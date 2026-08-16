@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#F7EFE4" />
+  <title>Money — KIRABAKI</title>
+  <link rel="stylesheet" href="tokens.css" />
+</head>
+<body class="app-body">
+  <div class="app-shell">
+    <div class="preview-banner">
+      <span>Preview data — engine would supply this</span>
+    </div>
+
+    <main class="page stack">
+      <header class="money-story">
+        <p class="when">This month</p>
+        <h1>Some of it stayed.</h1>
+        <p class="lede">After everyday spending, about <span class="num">RM1,240</span> didn’t leave. That’s the sentence. The list can wait.</p>
+      </header>
+
+      <svg class="sparkline" viewBox="0 0 320 64" role="img" aria-label="This month, gently up">
+        <path d="M6 48 C 46 46, 80 40, 118 38 S 190 36, 220 26 S 280 20, 314 14" fill="none" stroke="#E04A30" stroke-width="2.2" stroke-linecap="round"/>
+        <circle cx="314" cy="14" r="4" fill="#E04A30"/>
+      </svg>
+
+      <section>
+        <p class="section-kicker">Where it sits</p>
+        <div class="account">
+          <div>Everyday<small>Maybank</small></div>
+          <div class="num">RM 4,280</div>
+        </div>
+        <div class="account">
+          <div>Longer-term<small>EPF — thin on detail</small></div>
+          <div class="num">RM 38,500</div>
+        </div>
+        <div class="account">
+          <div>To watch<small>Card</small></div>
+          <div class="num">RM 1,120</div>
+        </div>
+      </section>
+
+      <button class="btn btn-secondary btn-block" type="button" id="toggle-month">How the month moved</button>
+      <div class="month-detail" id="month-detail" hidden>
+        <p>In about <span class="num">RM 6,800</span>. Out about <span class="num">RM 5,560</span>.</p>
+        <p style="margin-top:8px">This month went a little differently — more eating out, fewer one-off bills. The plan can move. Nothing failed.</p>
+      </div>
+    </main>
+
+    <nav class="tabbar" aria-label="Primary">
+      <a class="tab" href="journey.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 16c3-6 5-2 8-7s4 1 8-5" stroke-linecap="round"/><circle cx="20" cy="4" r="1.6" fill="currentColor"/></svg>
+        Journey
+      </a>
+      <a class="tab is-active" href="money.html" aria-current="page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="4" y="7" width="16" height="11" rx="3"/><path d="M4 11h16"/></svg>
+        Money
+      </a>
+      <a class="tab" href="find.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4" stroke-linecap="round"/></svg>
+        Find
+      </a>
+      <a class="tab" href="learn.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M5 7h14M5 12h10M5 17h8" stroke-linecap="round"/></svg>
+        Learn
+      </a>
+      <a class="tab" href="you.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="9" r="3"/><path d="M6 19c1.2-3 3.2-4.4 6-4.4s4.8 1.4 6 4.4" stroke-linecap="round"/></svg>
+        You
+      </a>
+    </nav>
+  </div>
+
+  <script>
+    const detail = document.getElementById("month-detail");
+    const toggle = document.getElementById("toggle-month");
+    toggle.addEventListener("click", () => {
+      const open = detail.hidden;
+      detail.hidden = !open;
+      toggle.textContent = open ? "Hide the month" : "How the month moved";
+    });
+  </script>
+</body>
+</html>

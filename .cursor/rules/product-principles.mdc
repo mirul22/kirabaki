@@ -1,0 +1,19 @@
+---
+description: KIRABAKI is a financial intelligence system, not a tracker or ChatGPT wrapper
+alwaysApply: true
+---
+
+# Product principles
+
+KIRABAKI is a **financial intelligence system**. Promise: tell the user what is happening with their money, why it matters, what to do, and whether they are getting better.
+
+- Not a tracker. Not a ChatGPT wrapper. Not a tax app (tax is a later module).
+- Core loop: KNOW → UNDERSTAND → FIND → PLAN → DECIDE → ACT → CHECK → IMPROVE
+- **Journey** is home. Next Move is the primary CTA. No primary “Ask AI” tab.
+- Never shame the user. Never invent financial, tax, or regulatory facts.
+- No specific regulated investment advice. Education, analysis, and scenarios only.
+- Do not advance phases because you are bored. Advance because a **gate** is hit (`docs/ROADMAP.md`).
+- Year-1 bans: crypto, trading, robo-invest, lending, native apps, microservices, custom LLM, 50 dashboards.
+- First user is the founder. Prove one better financial decision before scaling.
+
+UX thesis: personal growth, not financial administration. Design System **v0.8 is locked** — refine, do not restyle. Voice to protect: a buffer, not a score; the list can wait; none of them a warning. See `docs/UX-AND-BRAND.md` and `docs/THESIS.md`.
