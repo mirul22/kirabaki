@@ -32,6 +32,28 @@ export function monthPlainTalk(cashflow: PeriodCashflow, currency: string): stri
   return `This month went a little differently — ${formatMoney(cashflow.expenseCents, currency)} out.`;
 }
 
+export function monthAgainstLast(
+  current: { savingsCents: number },
+  previous: { savingsCents: number } | null,
+): string | null {
+  if (!previous) {
+    return null;
+  }
+  if (current.savingsCents > previous.savingsCents && current.savingsCents > 0) {
+    return "You kept more than last month.";
+  }
+  if (current.savingsCents > previous.savingsCents) {
+    return "Less went out than last month.";
+  }
+  if (current.savingsCents === previous.savingsCents) {
+    return "You kept about the same as last month.";
+  }
+  if (previous.savingsCents > 0 && current.savingsCents <= 0) {
+    return "This month went a little differently than last.";
+  }
+  return "You kept less than last month. That’s allowed.";
+}
+
 export function healthLanguage(input: {
   hasAccounts: boolean;
   buffer: EmergencyFundMonths;

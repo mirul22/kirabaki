@@ -5,6 +5,7 @@ describe("planTravelLoop", () => {
   it("covers accepted, later, and not-relevant paths", () => {
     const loop = planTravelLoop("2026-08-16");
     expect(loop.map((row) => row.key)).toEqual([
+      "empty_month",
       "missing_picture",
       "empty_month",
       "quiet_good",
