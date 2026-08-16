@@ -80,3 +80,138 @@ body,
     @apply bg-background text-foreground;
   }
 }
+
+/* Landing presence — short, then still. Respect reduced motion. */
+@keyframes kb-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes kb-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes kb-seal-in {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  70% {
+    transform: scale(1.18);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes kb-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.14);
+  }
+}
+
+@keyframes kb-line {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.kb-rise {
+  opacity: 0;
+}
+
+.kb-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.kb-seal {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.kb-found {
+  opacity: 0;
+}
+
+.kb-path-line {
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.kb-dot {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .kb-rise {
+    animation: kb-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .kb-draw {
+    animation: kb-draw 1.05s ease-out both;
+  }
+
+  .kb-seal {
+    animation:
+      kb-seal-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both,
+      kb-breathe 4.8s 2.1s ease-in-out infinite;
+  }
+
+  .kb-found {
+    animation: kb-rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .kb-path-line {
+    animation: kb-line 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .kb-dot {
+    animation: kb-seal-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .kb-phone {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .kb-phone:hover {
+    transform: translateY(-4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kb-rise,
+  .kb-found,
+  .kb-dot {
+    opacity: 1;
+  }
+
+  .kb-draw {
+    stroke-dashoffset: 0;
+  }
+
+  .kb-seal {
+    opacity: 1;
+  }
+
+  .kb-path-line {
+    transform: none;
+  }
+}

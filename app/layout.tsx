@@ -1,5 +1,6 @@
 import "./globals.css";
-import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
@@ -8,13 +9,18 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const inter = Inter({ subsets: ["latin"] });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#F7EFE4",
+};
+
 export const metadata: Metadata = {
-  title: "Kirabaki",
-  description: "Kirabaki is a simple budget companion that helps you unleash financial freedom.",
-  applicationName: "Kirabaki",
-  keywords: ["budget", "companion", "finance", "money", "management"],
-  viewport: "width=device-width, initial-scale=1",
-  manifest: "/manifest.json",   
+  title: "KIRABAKI",
+  description: "Your financial intelligence system. What’s happening with your money, why it matters, and what to do next.",
+  applicationName: "KIRABAKI",
+  keywords: ["financial intelligence", "money", "journey", "malaysia"],
+  manifest: "/manifest.json", 
   openGraph: {
     type: "website",
     url: "https://kirabaki.vercel.app",
@@ -48,13 +54,13 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="en">
       <body className={cn(
         inter.className,
-        "bg-neutral-950 text-slate-100 w-screen min-h-screen overflow-x-hidden mx-auto",
+        "bg-kb-bone text-kb-ink w-screen min-h-screen overflow-x-hidden mx-auto",
       )}>
         {children}
         <Analytics />

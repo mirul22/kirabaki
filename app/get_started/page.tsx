@@ -57,6 +57,7 @@ export default function GetStarted() {
     }
   
     return (
+      <div className="flex flex-row items-center justify-center h-full min-h-screen w-full bg-neutral-950 text-slate-100">
       <div className="flex flex-row items-center justify-center h-full w-5/6 lg:max-w-screen-sm mx-auto">
         <Card>
             <CardHeader>
@@ -77,6 +78,7 @@ export default function GetStarted() {
                 </form>
             </CardContent>
         </Card>
+      </div>
       </div>
     );
   }

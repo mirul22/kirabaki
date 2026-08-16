@@ -2,9 +2,11 @@
 
 Snapshot of the existing KIRABAKI prototype before the SaaS rebuild. Prototype docs archived at [archive/v1-prototype/](./archive/v1-prototype/).
 
+**Current stack (2026-08):** Next.js 16 + React 19 + `@serwist/next`. Auth and personal workspace exist. `/budget` is still the v1 localStorage prototype. The tables below remain the v1 snapshot.
+
 ## Summary
 
-Current KIRABAKI is a **client-only Next.js 14 PWA**. No API, no database, no auth. Source of truth is `localStorage`.
+v1 KIRABAKI was a **client-only Next.js 14 PWA**. No API, no database, no auth. Source of truth is `localStorage`.
 
 ```text
 Browser pages → localStorage
@@ -65,7 +67,7 @@ v2 must **not** preserve this visual language. Keep shadcn primitives; replace t
 | Tailwind setup | Restyle with new tokens after Design 0.5 |
 | `lib/utils.ts` (`cn`, `formatNumber`) | Helpers |
 | Sonner toasts, lucide-react | UX |
-| PWA foundation | Repair and keep as mobile product: `public/manifest.json`, `@ducanh2912/next-pwa`, Apple web-app meta in `app/layout.tsx` |
+| PWA foundation | Repair and keep as mobile product: `public/manifest.json`, `@serwist/next` (replaces `@ducanh2912/next-pwa`), Apple web-app meta in `app/layout.tsx` |
 | Vercel hosting | Deploy |
 | Vercel Analytics | **Events only** — never balances, income, or goals |
 

@@ -38,6 +38,21 @@ These lines are brand. Prefer this register over ledger language:
 
 Human categories on Find (Recurring, Quiet good, Incomplete) — not database labels. Sometimes the smartest next move is “Do nothing. You’re okay.”
 
+## Product copy (check every screen)
+
+Write like a calm professional. Not a pitch deck. Not a model talking about itself.
+
+**Never put in the UI:**
+
+- Positioning slogans: “not a tracker”, “not a chat window”, “not a ChatGPT wrapper”
+- Engineering: slice, engine, prototype, tenant, workspaceId
+- Thesis dumps of the full company promise
+- Cute/AI phrasing: “What should we call you?”, “One moment…”, “start your picture”, “left the picture”
+
+Those lines belong in docs. On screen, say the useful thing in plain language.
+
+Do not show a primary action that does nothing. If nothing changed, hide Save — do not leave a dead button.
+
 ## Never shame
 
 | Never | Prefer |
