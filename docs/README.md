@@ -1,6 +1,6 @@
 # KIRABAKI Docs
 
-Phase 0 source of truth for product thesis, architecture, and the Milestone 1 build brief.
+Source of truth for product thesis, architecture, and build briefs.
 
 **KIRABAKI is a financial intelligence system** — not a tracker, not a ChatGPT wrapper, not a tax app.
 
@@ -10,6 +10,7 @@ Promise: *Tell me what is happening with my money, why it matters, what I should
 
 | Doc | What it covers |
 | --- | --- |
+| **[STATUS.md](./STATUS.md)** | **Living board — done, current phase, milestone, gate, next** |
 | [THESIS.md](./THESIS.md) | Problem, KIRABAKI, north star, first proof, risks |
 | [VISION.md](./VISION.md) | Promise, Brain, moats, flywheels, Journey-first experience |
 | [UX-AND-BRAND.md](./UX-AND-BRAND.md) | UX thesis, nav, no-shame copy, Momentum, v0.8 lock |
@@ -21,22 +22,21 @@ Promise: *Tell me what is happening with my money, why it matters, what I should
 | [ARCHITECTURE.md](./ARCHITECTURE.md) | Stack, modular monolith, 4-layer Brain, security |
 | [DOMAIN-MODEL.md](./DOMAIN-MODEL.md) | Entities, tenancy, recommendations, memory |
 | [PLATFORM-AND-SCALE.md](./PLATFORM-AND-SCALE.md) | PWA-first, native gate, scale ladders |
-| [MILESTONE-1.md](./MILESTONE-1.md) | First coding brief — **not started until approved** |
-| [AUDIT.md](./AUDIT.md) | Current repo: reuse vs replace |
+| [MILESTONE-1.md](./MILESTONE-1.md) | First coding brief — five-tab PWA loop |
+| [AUDIT.md](./AUDIT.md) | v1 prototype snapshot (historical) |
 
 ## Archive
 
-v1 prototype docs (localStorage budget app): [archive/v1-prototype/](./archive/v1-prototype/)
+v1 prototype docs (localStorage budget list): [archive/v1-prototype/](./archive/v1-prototype/)
 
 ## Current codebase status
 
-The running app is still the **v1 prototype** (no auth, localStorage). Phase 0 docs and Design System v0.8 are locked. Application rebuild is Milestone 1.
-
-## Quick start (v1 prototype today)
+See **[STATUS.md](./STATUS.md)**. Short version: Milestone 1 is in the five-tab PWA (Journey / Money / Find / Learn / You). Gate 1 is founder weekly use. v1 `/budget` is leftover.
 
 ```bash
 npm install
+npm run db:migrate
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000). Tester: `npm run db:seed-tester`.

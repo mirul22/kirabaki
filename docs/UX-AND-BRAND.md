@@ -84,7 +84,9 @@ Foundation → Emergency Fund → Financial Stability → Major Goals → Wealth
 
 A wealthy user must not be shown beginner steps.
 
-**Layout:** greeting → current state → main goal → progress visualization → one **Next Move** → KIRABAKI Found → recent progress → small learning moment → optional secondary numbers.
+**Layout:** greeting → one status paragraph → main goal → one **Next Move** → latest note (not a log dump) → a small lesson as text → optional month rows.
+
+Do not stack three metric sentences, four “what you did” cards, and a bordered lesson. Air between sections. `quiet_good` is not an Okay button.
 
 **Next Move** is the most important CTA. It comes from the recommendation engine — never hardcoded in the UI. It answers what, why, evidence, impact if they do nothing, and the next action.
 
@@ -92,7 +94,7 @@ A wealthy user must not be shown beginner steps.
 
 Signature discovery surface. Feels like *I noticed something*, not *ALERT*.
 
-Show: what changed, why it matters (concrete numbers), a calm suggestion, one CTA (Review / Let’s look).
+Show: what changed, why it matters (concrete numbers), a calm suggestion, one CTA (Review / Let’s look). Find is that one open finding — not a graveyard of old rule names.
 
 Avoid red-warning-heavy interfaces. Reserve red for truly critical issues only.
 
@@ -104,13 +106,26 @@ Not a blog. Not a textbook. Goal: learn something useful in 60–180 seconds.
 
 ## Money
 
-Approachable progressive disclosure. Simple answer first; tables only when the user asks for detail. No dense financial tables as the default.
+The **Picture** is the living statement — what a household spreadsheet is for, without looking like Excel.
 
-After one place exists, **this month (in / out)** is the primary surface. Places sit in a fold — the list can wait. Icon-only actions use quiet Lucide strokes (not cartoon, not a new pack).
+Once a place exists, always show:
+
+1. **What you have, net** (own − owe)
+2. **Own** — places and assets as rows
+3. **Owe** — debts as rows
+4. **This month** — in, out, kept, then the lines
+
+**Read first.** Statement rows, not a stack of cards. One **Edit / Done** reveals change, remove, and add-own/owe. A single “Add in or out” may stay in view — not a fake input, not icons on every line.
+
+Adding in/out is how the month is filled. Tables only when the user opens earlier months.
+
+Do not hide own/owe so the screen can “feel less like a spreadsheet.” That hid the product.
 
 ## You
 
 Human, not an enterprise settings dump. Profile, financial identity, goals, preferences, commitments, progress, privacy, export/delete.
+
+Read the goal. **Edit** opens the fields. Save only if something changed.
 
 ## Gamification (careful)
 
@@ -154,7 +169,7 @@ Do not put Kira/Duo-style characters all over the UI. That would ruin the v0.8 f
 
 Banned: navy banking blue, generic fintech green, Duolingo green, Stripe indigo, gray terminal dashboards, red/green everywhere, cute-overload, “make it more fun” blobs/confetti.
 
-Typography: **Inter** for UI and headlines. **JetBrains Mono** only for amounts. Text is the primary interface — a briefing, not a chart wall.
+Typography: **Inter** for UI and headlines. **JetBrains Mono** only for amounts. Amounts always use grouping and two decimals: `1,000.00`, `10,000.00`, `100,000.00`, `1,000,000.00` — statement and forms. Text is the primary interface — a briefing, not a chart wall.
 
 Layout: generous whitespace + narrow focused column on mobile. Desktop may breathe horizontally (Journey + Found) without becoming a dashboard. Cards only when they earn their keep.
 

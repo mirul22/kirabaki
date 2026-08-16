@@ -13,7 +13,7 @@ export {
   monthsBetween,
   type IsoDate,
 } from "./period";
-export { formatMoney, formatMonths, formatRate, formatDay } from "./format";
+export { formatMoney, formatCentsGrouped, formatAmountTyping, formatAmountComplete, parseAmountToCents, formatMonths, formatRate, formatDay, formatMonth } from "./format";
 export { weekdayName } from "./weekday";
 export { monthSentence, monthPlainTalk, healthLanguage } from "./sentences";
 export {

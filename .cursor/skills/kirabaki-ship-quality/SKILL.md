@@ -27,9 +27,9 @@ Ask when: cute-overload vs brand, new dependencies, Year-1 bans, UI owning formu
 
 One job per screen. Progressive disclosure. “The list can wait.”
 
-Money: after a place exists, **In/Out is the highlight**. Places fold.
+Money: the Picture (own / owe / net + this month in / out / kept) is always visible after a place exists. In/Out is how you add to the month — not a substitute for the statement. Read first; Edit reveals change/remove. One “Add in or out” is enough in view mode.
 
-Icons: Lucide strokes already in the repo (Wallet, Star, Trash2, ArrowDownLeft, ArrowUpRight). Seal or muted ink. `aria-label` on icon-only controls. No new icon pack. No cartoon, emoji, or Duo.
+Icons: Lucide strokes already in the repo (Wallet, Star, ArrowDownLeft, ArrowUpRight). Do not put a trash/pencil column on every row. Seal or muted ink. `aria-label` on icon-only controls. No new icon pack. No cartoon, emoji, or Duo.
 
 ## 3. Prove it
 

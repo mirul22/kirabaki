@@ -50,7 +50,7 @@ export function WorkspaceSettingsForm({ defaultName, defaultCurrency }: Props) {
   }
 
   return (
-    <form onSubmit={onSubmit} className="mt-8 space-y-5">
+    <form onSubmit={onSubmit} className="space-y-5">
       <label className="block">
         <span className="text-sm text-kb-muted">Workspace name</span>
         <input

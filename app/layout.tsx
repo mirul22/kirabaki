@@ -61,11 +61,14 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={cn(
-        inter.className,
-        "bg-kb-bone text-kb-ink w-screen min-h-screen overflow-x-hidden mx-auto",
-      )}>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={cn(
+          inter.className,
+          "bg-kb-bone text-kb-ink w-screen min-h-screen overflow-x-hidden mx-auto",
+        )}
+        suppressHydrationWarning
+      >
         {children}
         <Analytics />
         <SpeedInsights />

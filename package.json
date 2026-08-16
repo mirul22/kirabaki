@@ -17,7 +17,9 @@
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
     "db:seed-founder": "npx tsx scripts/seed-founder.ts",
-    "db:clear-founder": "npx tsx scripts/seed-founder.ts --clear"
+    "db:clear-founder": "npx tsx scripts/seed-founder.ts --clear",
+    "db:seed-tester": "npx tsx scripts/seed-tester.ts",
+    "db:clear-tester": "npx tsx scripts/seed-tester.ts --clear"
   },
   "dependencies": {
     "@better-auth/drizzle-adapter": "^1.6.29",

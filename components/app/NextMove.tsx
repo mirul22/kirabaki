@@ -53,7 +53,11 @@ export function NextMoveCard({ recommendation }: { recommendation: Rec }) {
       <h2 className="mt-4 text-2xl font-extrabold tracking-tight">{recommendation.title}</h2>
       <p className="mt-3 text-base leading-relaxed text-white/70">{recommendation.happening}</p>
       {error ? <p className="mt-3 text-sm text-kb-seal">{error}</p> : null}
-      {href ? (
+      {recommendation.type === "quiet_good" ? (
+        <Link href="/money" className="mt-6 inline-flex h-11 items-center text-sm font-semibold text-[#f7efe4]/70">
+          See the picture
+        </Link>
+      ) : href ? (
         <Link
           href={href}
           className={`${buttonClass} mt-6 flex items-center justify-center`}
@@ -86,12 +90,12 @@ export function OutcomeForm({ actionId }: { actionId: string }) {
   }
 
   return (
-    <form onSubmit={onSubmit} className="rounded-2xl border border-kb-sand px-4 py-4">
+    <form onSubmit={onSubmit} className="mt-2">
       <p className="text-sm font-semibold text-kb-seal">What happened</p>
       <input type="hidden" name="actionId" value={actionId} />
       <input name="note" required minLength={2} placeholder="A sentence is enough." className={fieldClass} />
       {error ? <p className="mt-2 text-sm text-kb-seal">{error}</p> : null}
-      <button type="submit" className={`${buttonClass} mt-3`}>
+      <button type="submit" className={`${buttonClass} mt-4`}>
         Remember this
       </button>
     </form>

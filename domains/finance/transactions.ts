@@ -14,6 +14,22 @@ export async function listTransactions(workspaceId: string) {
     .orderBy(desc(moneyTransaction.occurredOn));
 }
 
+export async function getTransaction(workspaceId: string, transactionId: string) {
+  const id = assertWorkspaceId(workspaceId);
+  const rows = await db
+    .select()
+    .from(moneyTransaction)
+    .where(
+      and(
+        eq(moneyTransaction.id, transactionId),
+        eq(moneyTransaction.workspaceId, id),
+        isNull(moneyTransaction.deletedAt),
+      ),
+    )
+    .limit(1);
+  return rows[0] ?? null;
+}
+
 export async function createTransaction(
   workspaceId: string,
   actorUserId: string,
@@ -38,6 +54,39 @@ export async function createTransaction(
     category: input.category || null,
   });
   await recordAudit({ action: "transaction.created", workspaceId: id, actorUserId });
+}
+
+export async function updateTransaction(
+  workspaceId: string,
+  actorUserId: string,
+  transactionId: string,
+  input: {
+    accountId: string;
+    type: "income" | "expense";
+    name: string;
+    amountCents: number;
+    occurredOn: string;
+    category?: string;
+  },
+) {
+  const id = assertWorkspaceId(workspaceId);
+  const existing = await getTransaction(id, transactionId);
+  if (!existing) {
+    return { error: "That line is gone." as const };
+  }
+  await db
+    .update(moneyTransaction)
+    .set({
+      accountId: input.accountId,
+      type: input.type,
+      name: input.name,
+      amountCents: input.amountCents,
+      occurredOn: input.occurredOn,
+      category: input.category || null,
+    })
+    .where(and(eq(moneyTransaction.id, transactionId), eq(moneyTransaction.workspaceId, id)));
+  await recordAudit({ action: "transaction.updated", workspaceId: id, actorUserId });
+  return { ok: true as const };
 }
 
 export async function softDeleteTransaction(

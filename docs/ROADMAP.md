@@ -130,6 +130,7 @@ End of week 4: **YOU use it** with real data. Not customers.
 
 ## Related docs
 
+- [STATUS.md](./STATUS.md) — living board (done / now / next)
 - [MILESTONE-1.md](./MILESTONE-1.md)
 - [UX-AND-BRAND.md](./UX-AND-BRAND.md)
 - [ICP-AND-GTM.md](./ICP-AND-GTM.md)

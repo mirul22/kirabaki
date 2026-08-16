@@ -36,7 +36,7 @@ First proof: can KIRABAKI make the founder make one better financial decision th
 
 ## Advance only on gates
 
-See `docs/ROADMAP.md`. Do not advance because you are bored.
+See `docs/STATUS.md` for done / current / next. Phases live in `docs/ROADMAP.md`. Do not advance because you are bored.
 
 ## Year-1 / until-MVP bans
 
@@ -53,7 +53,7 @@ Tiers in `docs/ICP-AND-GTM.md` are **unvalidated**. Do not encode plans in code 
 
 ## Before adding a feature
 
-1. Which gate / milestone is this for? (`docs/MILESTONE-1.md`)
+1. Which gate / milestone is this for? (`docs/STATUS.md`, `docs/MILESTONE-1.md`)
 2. Which moat layer does it strengthen?
 3. Can it wait?
 4. Does it shame the user or invent advice? If yes, reject.

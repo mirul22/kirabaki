@@ -71,14 +71,18 @@ export async function recordOutcome(
 }
 
 export async function latestDecision(workspaceId: string) {
+  const rows = await listRecentDecisions(workspaceId, 1);
+  return rows[0] ?? null;
+}
+
+export async function listRecentDecisions(workspaceId: string, limit = 6) {
   const id = assertWorkspaceId(workspaceId);
-  const rows = await db
+  return db
     .select({ action, recommendation, outcome })
     .from(action)
     .innerJoin(recommendation, eq(action.recommendationId, recommendation.id))
     .leftJoin(outcome, eq(outcome.actionId, action.id))
     .where(eq(action.workspaceId, id))
     .orderBy(desc(action.createdAt))
-    .limit(1);
-  return rows[0] ?? null;
+    .limit(limit);
 }

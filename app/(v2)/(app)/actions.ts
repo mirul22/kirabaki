@@ -6,8 +6,14 @@ import { decideRecommendation, recordOutcome } from "@/domains/commitments/recor
 import { createAccount, getAccount, setPrimaryAccount, softDeleteAccount } from "@/domains/finance/accounts";
 import { createAsset, createLiability, softDeleteAsset, softDeleteLiability } from "@/domains/finance/positions";
 import { afterMoneyChange } from "@/domains/finance/refresh";
-import { accountSchema, positionSchema, profileFocusSchema, transactionSchema } from "@/domains/finance/schemas";
-import { createTransaction, softDeleteTransaction } from "@/domains/finance/transactions";
+import {
+  accountSchema,
+  positionSchema,
+  profileFocusSchema,
+  transactionSchema,
+  updateTransactionSchema,
+} from "@/domains/finance/schemas";
+import { createTransaction, getTransaction, softDeleteTransaction, updateTransaction } from "@/domains/finance/transactions";
 import { upsertPrimaryGoal } from "@/domains/goals/goals";
 import { goalSchema } from "@/domains/goals/schemas";
 import { deleteWorkspaceAndUser, exportWorkspace } from "@/domains/identity/export-delete";
@@ -71,6 +77,43 @@ export async function addTransactionAction(formData: FormData) {
     occurredOn: parsed.data.occurredOn,
     category: parsed.data.category,
   });
+  await refresh(workspace.id, workspace.currency);
+  return { ok: true as const };
+}
+
+export async function updateTransactionAction(formData: FormData) {
+  const parsed = updateTransactionSchema.safeParse({
+    id: formData.get("id"),
+    accountId: formData.get("accountId"),
+    type: formData.get("type"),
+    name: formData.get("name"),
+    amount: formData.get("amount"),
+    occurredOn: formData.get("occurredOn"),
+    category: formData.get("category") || undefined,
+  });
+  if (!parsed.success) {
+    return { error: parsed.error.issues[0]?.message ?? "Check what you entered." };
+  }
+  const { session, workspace } = await requireWorkspace();
+  const existing = await getTransaction(workspace.id, parsed.data.id);
+  if (!existing) {
+    return { error: "That line is gone." };
+  }
+  const place = await getAccount(workspace.id, parsed.data.accountId);
+  if (!place) {
+    return { error: "Pick a place that is still there." };
+  }
+  const result = await updateTransaction(workspace.id, session.user.id, parsed.data.id, {
+    accountId: place.id,
+    type: parsed.data.type,
+    name: parsed.data.name,
+    amountCents: parsed.data.amount,
+    occurredOn: parsed.data.occurredOn,
+    category: parsed.data.category,
+  });
+  if ("error" in result) {
+    return result;
+  }
   await refresh(workspace.id, workspace.currency);
   return { ok: true as const };
 }
