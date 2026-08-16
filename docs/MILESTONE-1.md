@@ -83,7 +83,7 @@ If any of these are missing, do not move to the next milestone.
 
 Work in small prompts — do not build the company in one pass:
 
-1. Domain schema (Drizzle) + auth + workspace
+1. Domain schema (Drizzle) + auth + workspace — **in progress** (identity, personal workspace, tenant helper)
 2. Goals
 3. Deterministic financial engine (`lib/money`) + tests
 4. Knowledge + Rules

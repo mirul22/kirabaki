@@ -11,7 +11,7 @@ export default function page() {
 
     return (
         <>
-        <div className='flex flex-col items-center justify-items-center gap-4 w-full min-h-screen'>
+        <div className='flex flex-col items-center justify-items-center gap-4 w-full min-h-screen bg-neutral-950 text-slate-100'>
             <ResetView />
             <div className='font-bold text-2xl lg:text-3xl leading-tight mt-10'>
                 KIRABAKI
