@@ -22,6 +22,9 @@ export type MonthKeepContrast = {
   thisKept: string;
 };
 
+export const STRONG_SAVE_BPS = 3_000;
+export const WEAK_SAVE_BPS = 2_000;
+
 export type PredicateKey =
   | "missing_picture"
   | "empty_month"
@@ -30,6 +33,8 @@ export type PredicateKey =
   | "out_after_kept"
   | "goal_slipping"
   | "kept_after_out"
+  | "saving_bottleneck"
+  | "income_bottleneck"
   | "quiet_good";
 
 export const predicates: Record<PredicateKey, (facts: FinanceFacts) => boolean> = {
@@ -45,6 +50,21 @@ export const predicates: Record<PredicateKey, (facts: FinanceFacts) => boolean> 
   goal_slipping: (facts) => facts.goalOnTrack === false,
   kept_after_out: (facts) =>
     facts.lastSavingsCents !== null && facts.lastSavingsCents <= 0 && facts.savingsCents > 0,
+  saving_bottleneck: (facts) =>
+    facts.accountCount > 0 &&
+    facts.incomeCents > 0 &&
+    facts.savingsCents > 0 &&
+    facts.savingsRateBps !== null &&
+    facts.savingsRateBps < WEAK_SAVE_BPS,
+  income_bottleneck: (facts) =>
+    facts.accountCount > 0 &&
+    facts.savingsCents > 0 &&
+    facts.savingsRateBps !== null &&
+    facts.savingsRateBps >= STRONG_SAVE_BPS &&
+    facts.emergencyFundMonths !== null &&
+    facts.emergencyFundMonths >= 3 &&
+    facts.lastIncomeCents !== null &&
+    facts.incomeCents <= facts.lastIncomeCents,
   quiet_good: (facts) =>
     facts.accountCount > 0 &&
     facts.emergencyFundMonths !== null &&

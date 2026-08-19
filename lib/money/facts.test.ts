@@ -82,6 +82,7 @@ describe("rule order from facts", () => {
       incomeCents: 1_000_000,
       expenseCents: 498_300,
       savingsCents: 501_700,
+      savingsRateBps: 5_017,
       emergencyFundMonths: 3.5,
       goalOnTrack: true,
       lastSavingsCents: -15_800,
@@ -107,6 +108,42 @@ describe("rule order from facts", () => {
     };
     const fired = RULES.filter((row) => predicates[row.key](facts)).sort((a, b) => a.priority - b.priority);
     expect(fired[0]?.key).toBe("out_after_kept");
+  });
+
+  it("names earning power when save is already strong and pay is flat, not you’re okay", () => {
+    const facts: FinanceFacts = {
+      ...empty,
+      accountCount: 3,
+      incomeCents: 1_000_000,
+      expenseCents: 400_000,
+      savingsCents: 600_000,
+      savingsRateBps: 6_000,
+      emergencyFundMonths: 3.5,
+      goalOnTrack: true,
+      lastSavingsCents: 550_000,
+      lastIncomeCents: 1_000_000,
+      lastMonthStart: "2026-07-01",
+    };
+    const fired = RULES.filter((row) => predicates[row.key](facts)).sort((a, b) => a.priority - b.priority);
+    expect(fired[0]?.key).toBe("income_bottleneck");
+    expect(fired.some((row) => row.key === "quiet_good")).toBe(true);
+  });
+
+  it("names the gap when income is there but little stayed", () => {
+    const facts: FinanceFacts = {
+      ...empty,
+      accountCount: 3,
+      incomeCents: 1_000_000,
+      expenseCents: 900_000,
+      savingsCents: 100_000,
+      savingsRateBps: 1_000,
+      emergencyFundMonths: 3.5,
+      lastSavingsCents: 80_000,
+      lastIncomeCents: 1_000_000,
+      lastMonthStart: "2026-07-01",
+    };
+    const fired = RULES.filter((row) => predicates[row.key](facts)).sort((a, b) => a.priority - b.priority);
+    expect(fired[0]?.key).toBe("saving_bottleneck");
   });
 });
 

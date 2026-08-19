@@ -1,6 +1,13 @@
 import { integer, pgEnum, pgTable, text, timestamp } from "drizzle-orm/pg-core";
 
 export const knowledgeKind = pgEnum("knowledge_kind", ["book", "article", "regulator"]);
+export const knowledgeTier = pgEnum("knowledge_tier", [
+  "official",
+  "theory",
+  "book",
+  "educator",
+  "community",
+]);
 export const ruleStatus = pgEnum("rule_status", ["draft", "active", "retired"]);
 
 export const knowledgeSource = pgTable("knowledge_source", {
@@ -8,6 +15,7 @@ export const knowledgeSource = pgTable("knowledge_source", {
   title: text("title").notNull(),
   author: text("author").notNull(),
   kind: knowledgeKind("kind").notNull(),
+  tier: knowledgeTier("tier").notNull().default("book"),
   year: integer("year"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });

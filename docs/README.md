@@ -25,6 +25,9 @@ Promise: *Tell me what is happening with my money, why it matters, what I should
 | [MILESTONE-1.md](./MILESTONE-1.md) | First coding brief — five-tab PWA loop |
 | [MILESTONE-2.md](./MILESTONE-2.md) | Monthly memory — see the months |
 | [MILESTONE-3.md](./MILESTONE-3.md) | Memory changes the Next Move |
+| [MILESTONE-4.md](./MILESTONE-4.md) | Knowledge foundation — tiers + KCLau paraphrases |
+| [MILESTONE-5.md](./MILESTONE-5.md) | Saving / Income bottleneck |
+| [FOUNDATION-V1.md](./FOUNDATION-V1.md) | How books enter the Brain |
 | [AUDIT.md](./AUDIT.md) | v1 prototype snapshot (historical) |
 
 ## Archive
@@ -33,7 +36,7 @@ v1 prototype docs (localStorage budget list): [archive/v1-prototype/](./archive/
 
 ## Current codebase status
 
-See **[STATUS.md](./STATUS.md)**. Short version: Milestone 3 closed (memory changes the Next Move). Next is knowledge foundation. Gate 1 passed. v1 `/budget` is leftover.
+See **[STATUS.md](./STATUS.md)**. Short version: Milestone 4 closed (knowledge foundation). Milestone 5 is the Saving / Income bottleneck. Gate 1 passed. v1 `/budget` is leftover.
 
 ```bash
 npm install
