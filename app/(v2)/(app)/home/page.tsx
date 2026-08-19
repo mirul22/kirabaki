@@ -8,7 +8,7 @@ import { afterMoneyChange } from "@/domains/finance/refresh";
 import { getPrinciple } from "@/domains/knowledge/ensure";
 import { listRecentSnapshots } from "@/domains/snapshots/remember";
 import { requireWorkspace } from "@/lib/auth/session";
-import { formatMoney, monthPlainTalk, weekdayName } from "@/lib/money";
+import { formatMoney, monthKeepContrast, monthPlainTalk, weekdayName } from "@/lib/money";
 
 export const dynamic = "force-dynamic";
 
@@ -64,7 +64,10 @@ export default async function JourneyPage() {
 
       <div className="mt-12">
         {nextMove ? (
-          <NextMoveCard recommendation={nextMove} />
+          <NextMoveCard
+            recommendation={nextMove}
+            contrast={monthKeepContrast(nextMove.type, picture.facts, currency)}
+          />
         ) : arrived ? (
           <section className="rounded-2xl bg-kb-discovery px-5 py-6 text-[#f7efe4]">
             <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-kb-seal">KIRABAKI found</p>

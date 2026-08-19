@@ -20,6 +20,8 @@ export { monthClosesFromLines, type MonthClose, type MonthCloseLine } from "./me
 export {
   predicates,
   fillTemplate,
+  monthKeepContrast,
   type FinanceFacts,
   type PredicateKey,
+  type MonthKeepContrast,
 } from "./facts";

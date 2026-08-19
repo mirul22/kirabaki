@@ -21,10 +21,15 @@ test.describe("Hafiz can see the months", () => {
     await signIn(page);
 
     await expect(page.getByRole("heading", { name: /Hey,/ })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Hold what stayed" })).toBeVisible();
+    await expect(page.getByText(`${monthLabel(1)} nothing stayed. This month some of it did.`)).toBeVisible();
+    await expect(page.getByRole("heading", { name: "You’re okay" })).toHaveCount(0);
+    await expect(page.getByRole("heading", { name: "Keep the buffer" })).toHaveCount(0);
     await expect(page.getByText("The months")).toBeVisible();
-    await expect(page.getByText("This month", { exact: true }).first()).toBeVisible();
-    await expect(page.getByText(monthLabel(1))).toBeVisible();
-    await expect(page.getByText(monthLabel(2))).toBeVisible();
+    const months = page.locator("section").filter({ hasText: "The months" });
+    await expect(months.getByText("This month", { exact: true })).toBeVisible();
+    await expect(months.getByText(monthLabel(1), { exact: true })).toBeVisible();
+    await expect(months.getByText(monthLabel(2), { exact: true })).toBeVisible();
     await expect(page.getByText("In", { exact: true }).first()).toBeVisible();
     await expect(page.getByText("Out", { exact: true }).first()).toBeVisible();
     await expect(page.getByText("Kept", { exact: true }).first()).toBeVisible();

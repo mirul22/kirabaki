@@ -3,6 +3,7 @@ import { NextMoveCard } from "@/components/app/NextMove";
 import { afterMoneyChange } from "@/domains/finance/refresh";
 import { getOpenRecommendation } from "@/domains/recommendations/refresh";
 import { requireWorkspace } from "@/lib/auth/session";
+import { monthKeepContrast } from "@/lib/money";
 
 export const dynamic = "force-dynamic";
 
@@ -11,6 +12,7 @@ export default async function FindPage() {
   const { picture } = await afterMoneyChange(workspace.id, workspace.currency);
   const arrived = picture.accounts.length === 0;
   const open = arrived ? null : await getOpenRecommendation(workspace.id);
+  const contrast = open ? monthKeepContrast(open.type, picture.facts, workspace.currency) : null;
 
   return (
     <AppChrome current="/find">
@@ -28,7 +30,7 @@ export default async function FindPage() {
 
       {open ? (
         <div className="mt-12">
-          <NextMoveCard recommendation={open} />
+          <NextMoveCard recommendation={open} contrast={contrast} />
         </div>
       ) : null}
     </AppChrome>

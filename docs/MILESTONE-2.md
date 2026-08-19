@@ -1,6 +1,6 @@
 # Milestone 2 — Monthly memory
 
-**Status:** Coding. Living board: [STATUS.md](./STATUS.md). Design System v0.8 stays locked — refine, do not restyle.
+**Status:** Closed — Journey shows month closes. Living board: [STATUS.md](./STATUS.md).
 
 Objective: the user can **see the months**. Each remembered month has a close — in, out, kept — from Layer 1 numbers, plus one sentence vs last month. Not a spreadsheet. Not a new tab.
 

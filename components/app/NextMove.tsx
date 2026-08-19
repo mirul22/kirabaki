@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useState, type FormEvent } from "react";
 import { decideAction, saveOutcomeAction } from "@/app/(v2)/(app)/actions";
-import { buttonClass, fieldClass } from "@/components/app/fields";
+import { buttonClass, fieldClass, moneyClass } from "@/components/app/fields";
+import type { MonthKeepContrast } from "@/lib/money";
 
 type Rec = {
   id: string;
@@ -18,7 +19,8 @@ function hrefFor(type: string): string | null {
     type === "missing_picture" ||
     type === "empty_month" ||
     type === "thin_buffer" ||
-    type === "nothing_stayed"
+    type === "nothing_stayed" ||
+    type === "out_after_kept"
   ) {
     return "/money";
   }
@@ -28,7 +30,13 @@ function hrefFor(type: string): string | null {
   return null;
 }
 
-export function NextMoveCard({ recommendation }: { recommendation: Rec }) {
+export function NextMoveCard({
+  recommendation,
+  contrast,
+}: {
+  recommendation: Rec;
+  contrast?: MonthKeepContrast | null;
+}) {
   const [error, setError] = useState<string | null>(null);
   const href = hrefFor(recommendation.type);
 
@@ -52,8 +60,23 @@ export function NextMoveCard({ recommendation }: { recommendation: Rec }) {
       </p>
       <h2 className="mt-4 text-2xl font-extrabold tracking-tight">{recommendation.title}</h2>
       <p className="mt-3 text-base leading-relaxed text-white/70">{recommendation.happening}</p>
+      {contrast ? (
+        <div className="mt-5">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-kb-seal">Kept</p>
+          <dl>
+            <div className="mt-1 flex items-baseline justify-between gap-4 border-b border-white/15 py-3">
+              <dt className="text-sm text-white/70">{contrast.lastLabel}</dt>
+              <dd className={moneyClass}>{contrast.lastKept}</dd>
+            </div>
+            <div className="flex items-baseline justify-between gap-4 border-b border-white/15 py-3">
+              <dt className="text-sm text-white/70">{contrast.thisLabel}</dt>
+              <dd className={moneyClass}>{contrast.thisKept}</dd>
+            </div>
+          </dl>
+        </div>
+      ) : null}
       {error ? <p className="mt-3 text-sm text-kb-seal">{error}</p> : null}
-      {recommendation.type === "quiet_good" ? (
+      {recommendation.type === "quiet_good" || recommendation.type === "kept_after_out" ? (
         <Link href="/money" className="mt-6 inline-flex h-11 items-center text-sm font-semibold text-[#f7efe4]/70">
           See the picture
         </Link>

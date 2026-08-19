@@ -24,6 +24,7 @@ Promise: *Tell me what is happening with my money, why it matters, what I should
 | [PLATFORM-AND-SCALE.md](./PLATFORM-AND-SCALE.md) | PWA-first, native gate, scale ladders |
 | [MILESTONE-1.md](./MILESTONE-1.md) | First coding brief — five-tab PWA loop |
 | [MILESTONE-2.md](./MILESTONE-2.md) | Monthly memory — see the months |
+| [MILESTONE-3.md](./MILESTONE-3.md) | Memory changes the Next Move |
 | [AUDIT.md](./AUDIT.md) | v1 prototype snapshot (historical) |
 
 ## Archive
@@ -32,7 +33,7 @@ v1 prototype docs (localStorage budget list): [archive/v1-prototype/](./archive/
 
 ## Current codebase status
 
-See **[STATUS.md](./STATUS.md)**. Short version: Milestone 1 is closed. Milestone 2 is monthly memory on Journey. Gate 1 passed. v1 `/budget` is leftover.
+See **[STATUS.md](./STATUS.md)**. Short version: Milestone 3 closed (memory changes the Next Move). Next is knowledge foundation. Gate 1 passed. v1 `/budget` is leftover.
 
 ```bash
 npm install
