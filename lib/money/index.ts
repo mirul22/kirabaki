@@ -21,6 +21,8 @@ export {
   predicates,
   fillTemplate,
   monthKeepContrast,
+  STRONG_SAVE_BPS,
+  WEAK_SAVE_BPS,
   type FinanceFacts,
   type PredicateKey,
   type MonthKeepContrast,

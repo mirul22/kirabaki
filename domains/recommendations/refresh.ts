@@ -10,6 +10,7 @@ import {
   formatMoney,
   formatMonth,
   formatMonths,
+  formatRate,
   predicates,
   type PredicateKey,
 } from "@/lib/money";
@@ -25,6 +26,8 @@ function tokens(picture: MoneyPicture, currency: string): Record<string, string>
     savings: formatMoney(picture.cashflow.savingsCents, currency),
     last_savings: lastSavings,
     last_month: picture.facts.lastMonthStart === null ? "—" : formatMonth(picture.facts.lastMonthStart),
+    savings_rate:
+      picture.cashflow.savingsRateBps === null ? "—" : formatRate(picture.cashflow.savingsRateBps),
     months_behind:
       picture.facts.monthsBehind === null ? "—" : String(picture.facts.monthsBehind),
   };

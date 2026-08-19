@@ -1,0 +1,2 @@
+CREATE TYPE "public"."knowledge_tier" AS ENUM('official', 'theory', 'book', 'educator', 'community');--> statement-breakpoint
+ALTER TABLE "knowledge_source" ADD COLUMN "tier" "knowledge_tier" DEFAULT 'book' NOT NULL;

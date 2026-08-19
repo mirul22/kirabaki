@@ -7,7 +7,7 @@ This is the living board. Roadmap and briefs do not change every week. This file
 | Question | Answer |
 | --- | --- |
 | **Phase now** | Personal loop is live: thin Brain + Journey + money picture (Phases 1–3, not the whole of each) |
-| **Milestone now** | **Milestone 4 — knowledge foundation** (next) |
+| **Milestone now** | **Milestone 5 — Saving / Income bottleneck** (ready to retest) |
 | **Gate now** | **Gate 1 passed** — founder used it for a week (16 Aug 2026) |
 | **Do not start** | Tax, MyInvois, Business, native apps, LLM, bank connect |
 
@@ -20,7 +20,7 @@ Three different clocks. Do not mix them.
 | Clock | What it is | Where |
 | --- | --- | --- |
 | **Phase** | Product arc (Brain → Journey → money → advisor → tax…) | [ROADMAP.md](./ROADMAP.md) |
-| **Milestone** | What we actually build next | [MILESTONE-1.md](./MILESTONE-1.md), [MILESTONE-2.md](./MILESTONE-2.md), [MILESTONE-3.md](./MILESTONE-3.md) |
+| **Milestone** | What we actually build next | [MILESTONE-1.md](./MILESTONE-1.md), [MILESTONE-2.md](./MILESTONE-2.md), [MILESTONE-3.md](./MILESTONE-3.md), [MILESTONE-4.md](./MILESTONE-4.md), [MILESTONE-5.md](./MILESTONE-5.md) |
 | **Gate** | When we are allowed to advance | [ROADMAP.md](./ROADMAP.md) |
 
 Advance because a **gate** is hit, not because the screen is boring.
@@ -74,6 +74,10 @@ Month closes on Journey: In / Out / Kept, one Layer-1 sentence vs last, Hafiz fo
 
 Last month vs this month changes the Next Move. After a loud month, a quiet one is **Hold what stayed**, with last keep next to this keep.
 
+### Milestone 4 — closed
+
+Source tiers on the catalog. KCLau *Millionaire Roadmap* as four paraphrased principles. See [FOUNDATION-V1.md](./FOUNDATION-V1.md).
+
 ---
 
 ## Milestone 1 definition of done
@@ -118,7 +122,9 @@ From [MILESTONE-1.md](./MILESTONE-1.md).
 
 ## Next
 
-**Milestone 4 — knowledge foundation** (next). Malaysian roadmap as catalog data, not twelve engines. See the Foundation v1 runbook. Do not start tax, Return, or an LLM.
+**Milestone 5 — Saving / Income bottleneck** (ready to retest): [MILESTONE-5.md](./MILESTONE-5.md).
+
+When the picture is quiet, name the lever — saving vs income — from Layer 1. No score. No Return. Loud-month memory still wins.
 
 ---
 
@@ -145,6 +151,9 @@ From [MILESTONE-1.md](./MILESTONE-1.md).
 | M1 build brief | [MILESTONE-1.md](./MILESTONE-1.md) |
 | M2 build brief | [MILESTONE-2.md](./MILESTONE-2.md) |
 | M3 build brief | [MILESTONE-3.md](./MILESTONE-3.md) |
+| M4 build brief | [MILESTONE-4.md](./MILESTONE-4.md) |
+| M5 build brief | [MILESTONE-5.md](./MILESTONE-5.md) |
+| Foundation v1 | [FOUNDATION-V1.md](./FOUNDATION-V1.md) |
 | Screens and voice | [UX-AND-BRAND.md](./UX-AND-BRAND.md) |
 | How the Brain is layered | [ARCHITECTURE.md](./ARCHITECTURE.md) |
 | v1 leftover notes | [AUDIT.md](./AUDIT.md) (historical) |
