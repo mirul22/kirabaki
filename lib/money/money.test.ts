@@ -9,6 +9,8 @@ import {
   goalProjection,
   healthLanguage,
   majorToCents,
+  monthAgainstLast,
+  monthClosesFromLines,
   monthPlainTalk,
   monthRange,
   monthSentence,
@@ -180,5 +182,68 @@ describe("monthPlainTalk", () => {
     const talk = monthPlainTalk(periodCashflow({ incomeCents: 645_000, expenseCents: 234_800 }), "MYR");
     expect(talk).toContain("RM4,102.00");
     expect(talk).toContain("RM6,450.00");
+  });
+});
+
+describe("monthClosesFromLines", () => {
+  it("groups dated lines and always includes this month", () => {
+    const closes = monthClosesFromLines(
+      [
+        { occurredOn: "2026-06-01", type: "income", amountCents: 100_000 },
+        { occurredOn: "2026-06-10", type: "expense", amountCents: 40_000 },
+        { occurredOn: "2026-07-01", type: "income", amountCents: 80_000 },
+        { occurredOn: "2026-08-20", type: "income", amountCents: 50_000 },
+      ],
+      "2026-08-16",
+      6,
+    );
+    expect(closes.map((row) => row.periodStart)).toEqual(["2026-08-01", "2026-07-01", "2026-06-01"]);
+    expect(closes[0]?.incomeCents).toBe(0);
+    expect(closes[1]?.incomeCents).toBe(80_000);
+    expect(closes[2]?.savingsCents).toBe(60_000);
+  });
+
+  it("keeps the newest six months", () => {
+    const lines = Array.from({ length: 8 }, (_, index) => ({
+      occurredOn: `2026-0${index + 1}-01` as const,
+      type: "income" as const,
+      amountCents: 1_000,
+    }));
+    const closes = monthClosesFromLines(lines, "2026-08-16", 6);
+    expect(closes).toHaveLength(6);
+    expect(closes[0]?.periodStart).toBe("2026-08-01");
+    expect(closes.at(-1)?.periodStart).toBe("2026-03-01");
+  });
+});
+
+describe("monthAgainstLast", () => {
+  it("stays quiet with only one month", () => {
+    expect(monthAgainstLast({ savingsCents: 10 }, null)).toBeNull();
+  });
+
+  it("names a stronger keep without a score", () => {
+    expect(monthAgainstLast({ savingsCents: 50 }, { savingsCents: 10 })).toBe("You kept more than last month.");
+  });
+
+  it("allows a smaller keep", () => {
+    expect(monthAgainstLast({ savingsCents: 10 }, { savingsCents: 50 })).toBe(
+      "You kept less than last month. That’s allowed.",
+    );
+  });
+
+  it("treats a flip from kept to not as a different month", () => {
+    expect(monthAgainstLast({ savingsCents: -20 }, { savingsCents: 40 })).toBe(
+      "This month went a little differently than last.",
+    );
+  });
+
+  it("says less went out when the hole got smaller", () => {
+    expect(monthAgainstLast({ savingsCents: -10 }, { savingsCents: -40 })).toBe("Less went out than last month.");
+  });
+
+  it("says the keep was about the same", () => {
+    expect(monthAgainstLast({ savingsCents: 25 }, { savingsCents: 25 })).toBe(
+      "You kept about the same as last month.",
+    );
   });
 });

@@ -19,7 +19,8 @@
     "db:seed-founder": "npx tsx scripts/seed-founder.ts",
     "db:clear-founder": "npx tsx scripts/seed-founder.ts --clear",
     "db:seed-tester": "npx tsx scripts/seed-tester.ts",
-    "db:clear-tester": "npx tsx scripts/seed-tester.ts --clear"
+    "db:clear-tester": "npx tsx scripts/seed-tester.ts --clear",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@better-auth/drizzle-adapter": "^1.6.29",
@@ -53,6 +54,7 @@
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
+    "@playwright/test": "^1.55.0",
     "autoprefixer": "^10.5.4",
     "dotenv": "^17.4.2",
     "drizzle-kit": "^0.31.10",

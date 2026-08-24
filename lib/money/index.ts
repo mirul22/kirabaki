@@ -15,10 +15,13 @@ export {
 } from "./period";
 export { formatMoney, formatCentsGrouped, formatAmountTyping, formatAmountComplete, parseAmountToCents, formatMonths, formatRate, formatDay, formatMonth } from "./format";
 export { weekdayName } from "./weekday";
-export { monthSentence, monthPlainTalk, healthLanguage } from "./sentences";
+export { monthSentence, monthPlainTalk, monthAgainstLast, healthLanguage } from "./sentences";
+export { monthClosesFromLines, type MonthClose, type MonthCloseLine } from "./memory";
 export {
   predicates,
   fillTemplate,
+  monthKeepContrast,
   type FinanceFacts,
   type PredicateKey,
+  type MonthKeepContrast,
 } from "./facts";

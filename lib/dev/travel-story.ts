@@ -21,6 +21,7 @@ export const STORY_PLACES: {
 
 export const STORY_ASSETS = [
   { name: "EPF", amountMajor: 42_600 },
+  { name: "ASB", amountMajor: 6_200 },
   { name: "Honda City", amountMajor: 38_000 },
 ] as const;
 
@@ -31,7 +32,7 @@ export const STORY_LIABILITIES = [
 ] as const;
 
 type Draft = {
-  monthsAgo: 0 | 1 | 2;
+  monthsAgo: 0 | 1 | 2 | 3;
   day: number;
   place: StoryPlaceKey;
   type: "income" | "expense";
@@ -40,7 +41,7 @@ type Draft = {
   category: string;
 };
 
-function food(monthsAgo: 0 | 1 | 2, day: number, major: number, ride = false): Draft {
+function food(monthsAgo: 0 | 1 | 2 | 3, day: number, major: number, ride = false): Draft {
   return {
     monthsAgo,
     day,
@@ -53,8 +54,45 @@ function food(monthsAgo: 0 | 1 | 2, day: number, major: number, ride = false): D
 }
 
 const DRAFTS: Draft[] = [
-  // June — a normal month, some of it stayed.
+  // May — quieter. Sent money home. In and out evened out.
+  { monthsAgo: 3, day: 1, place: "bank", type: "income", name: "Pay", major: 10_000, category: "pay" },
+  { monthsAgo: 3, day: 2, place: "bank", type: "expense", name: "Rent", major: 1_800, category: "rent" },
+  { monthsAgo: 3, day: 2, place: "bank", type: "expense", name: "House maintenance", major: 200, category: "rent" },
+  { monthsAgo: 3, day: 3, place: "bank", type: "expense", name: "Car loan", major: 1_000, category: "car" },
+  { monthsAgo: 3, day: 4, place: "bank", type: "expense", name: "Credit card", major: 580, category: "card" },
+  { monthsAgo: 3, day: 5, place: "bank", type: "expense", name: "TNB", major: 148, category: "bills" },
+  { monthsAgo: 3, day: 6, place: "bank", type: "expense", name: "Unifi", major: 129, category: "bills" },
+  { monthsAgo: 3, day: 7, place: "bank", type: "expense", name: "Phone", major: 88, category: "bills" },
+  { monthsAgo: 3, day: 8, place: "bank", type: "expense", name: "Groceries", major: 198, category: "groceries" },
+  { monthsAgo: 3, day: 11, place: "bank", type: "expense", name: "Petrol", major: 88, category: "car" },
+  { monthsAgo: 3, day: 14, place: "bank", type: "expense", name: "Groceries", major: 176, category: "groceries" },
+  { monthsAgo: 3, day: 18, place: "bank", type: "expense", name: "Medical insurance", major: 160, category: "bills" },
+  { monthsAgo: 3, day: 21, place: "bank", type: "expense", name: "Clinic", major: 92, category: "bills" },
+  { monthsAgo: 3, day: 22, place: "bank", type: "expense", name: "Petrol", major: 76, category: "car" },
+  { monthsAgo: 3, day: 25, place: "bank", type: "expense", name: "Family", major: 4_800, category: "family" },
+  { monthsAgo: 3, day: 27, place: "bank", type: "expense", name: "Shopee", major: 88, category: "other" },
+  { monthsAgo: 3, day: 28, place: "ewallet", type: "expense", name: "TNG", major: 40, category: "car" },
+  food(3, 3, 22),
+  food(3, 5, 18),
+  food(3, 6, 12, true),
+  food(3, 8, 28),
+  food(3, 10, 16),
+  food(3, 12, 31),
+  food(3, 15, 19),
+  food(3, 17, 24),
+  food(3, 19, 14, true),
+  food(3, 22, 27),
+  food(3, 24, 21),
+  food(3, 27, 33),
+  food(3, 29, 18),
+  { monthsAgo: 3, day: 8, place: "cash", type: "expense", name: "Parking", major: 6, category: "car" },
+  { monthsAgo: 3, day: 16, place: "cash", type: "expense", name: "Drinks", major: 12, category: "food" },
+  { monthsAgo: 3, day: 23, place: "cash", type: "expense", name: "Pasar", major: 28, category: "groceries" },
+  { monthsAgo: 3, day: 26, place: "cash", type: "expense", name: "Parking", major: 8, category: "car" },
+
+  // June — a normal month, some of it stayed. Weekend work too.
   { monthsAgo: 2, day: 1, place: "bank", type: "income", name: "Pay", major: 10_000, category: "pay" },
+  { monthsAgo: 2, day: 16, place: "bank", type: "income", name: "Weekend work", major: 850, category: "pay" },
   { monthsAgo: 2, day: 2, place: "bank", type: "expense", name: "Rent", major: 1_800, category: "rent" },
   { monthsAgo: 2, day: 2, place: "bank", type: "expense", name: "House maintenance", major: 200, category: "rent" },
   { monthsAgo: 2, day: 3, place: "bank", type: "expense", name: "Car loan", major: 1_000, category: "car" },
@@ -67,6 +105,7 @@ const DRAFTS: Draft[] = [
   { monthsAgo: 2, day: 14, place: "bank", type: "expense", name: "Groceries", major: 186, category: "groceries" },
   { monthsAgo: 2, day: 18, place: "bank", type: "expense", name: "Medical insurance", major: 160, category: "bills" },
   { monthsAgo: 2, day: 22, place: "bank", type: "expense", name: "Petrol", major: 88, category: "car" },
+  { monthsAgo: 2, day: 21, place: "bank", type: "expense", name: "Clinic", major: 85, category: "bills" },
   { monthsAgo: 2, day: 27, place: "bank", type: "expense", name: "Shopee", major: 67, category: "other" },
   food(2, 3, 24),
   food(2, 5, 18),
@@ -137,6 +176,7 @@ const DRAFTS: Draft[] = [
   { monthsAgo: 0, day: 6, place: "bank", type: "expense", name: "Unifi", major: 129, category: "bills" },
   { monthsAgo: 0, day: 7, place: "bank", type: "expense", name: "Phone", major: 88, category: "bills" },
   { monthsAgo: 0, day: 8, place: "bank", type: "expense", name: "Groceries", major: 205, category: "groceries" },
+  { monthsAgo: 0, day: 9, place: "bank", type: "expense", name: "Yen", major: 500, category: "travel" },
   { monthsAgo: 0, day: 11, place: "bank", type: "expense", name: "Petrol", major: 90, category: "car" },
   { monthsAgo: 0, day: 13, place: "bank", type: "expense", name: "Groceries", major: 88, category: "groceries" },
   food(0, 2, 21),
@@ -148,13 +188,14 @@ const DRAFTS: Draft[] = [
   food(0, 12, 15, true),
   food(0, 14, 31),
   food(0, 15, 24),
+  { monthsAgo: 0, day: 4, place: "ewallet", type: "expense", name: "TNG", major: 50, category: "car" },
   { monthsAgo: 0, day: 6, place: "cash", type: "expense", name: "Parking", major: 7, category: "car" },
   { monthsAgo: 0, day: 12, place: "cash", type: "expense", name: "Drinks", major: 14, category: "food" },
 ];
 
-export function storyMonthStarts(asOf: IsoDate): [IsoDate, IsoDate, IsoDate] {
+export function storyMonthStarts(asOf: IsoDate): [IsoDate, IsoDate, IsoDate, IsoDate] {
   const current = monthRange(asOf).start;
-  return [addMonths(current, -2), addMonths(current, -1), current];
+  return [addMonths(current, -3), addMonths(current, -2), addMonths(current, -1), current];
 }
 
 export function dateInMonth(monthStart: IsoDate, day: number, latest: IsoDate): IsoDate | null {
@@ -182,7 +223,7 @@ export function planTravelStory(asOf: IsoDate) {
   const lines: StoryLine[] = [];
 
   for (const draft of DRAFTS) {
-    const monthStart = months[2 - draft.monthsAgo];
+    const monthStart = months[3 - draft.monthsAgo];
     const occurredOn = dateInMonth(monthStart, draft.day, asOf);
     if (!occurredOn) {
       continue;

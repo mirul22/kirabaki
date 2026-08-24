@@ -12,6 +12,7 @@ export default defineConfig([
     "node_modules/**",
     "docs/**",
     "drizzle/**",
+    "e2e/**",
     "components/AddTransactionView.tsx",
     "components/SummaryView.tsx",
     "components/TransactionView.tsx",

@@ -8,6 +8,7 @@ import {
   monthSentence,
   netWorth,
   periodCashflow,
+  monthClosesFromLines,
   todayIso,
   type FinanceFacts,
   type GoalProjection,
@@ -101,6 +102,9 @@ export function assembleMoneyPicture(input: {
     });
   }
 
+  const closes = monthClosesFromLines(known, asOf, 6);
+  const previous = closes[1] ?? null;
+
   const facts: FinanceFacts = {
     accountCount: places.length,
     incomeCents: cashflow.incomeCents,
@@ -110,6 +114,10 @@ export function assembleMoneyPicture(input: {
     emergencyFundMonths: buffer.months,
     goalOnTrack: projection?.onTrack ?? null,
     monthsBehind: projection?.monthsBehind ?? null,
+    lastSavingsCents: previous?.savingsCents ?? null,
+    lastIncomeCents: previous?.incomeCents ?? null,
+    lastExpenseCents: previous?.expenseCents ?? null,
+    lastMonthStart: previous?.periodStart ?? null,
   };
 
   return {

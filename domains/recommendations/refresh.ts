@@ -8,17 +8,23 @@ import { newId } from "@/lib/id";
 import {
   fillTemplate,
   formatMoney,
+  formatMonth,
   formatMonths,
   predicates,
   type PredicateKey,
 } from "@/lib/money";
 
 function tokens(picture: MoneyPicture, currency: string): Record<string, string> {
+  const lastSavings =
+    picture.facts.lastSavingsCents === null ? "—" : formatMoney(picture.facts.lastSavingsCents, currency);
   return {
     emergency_fund_months:
       picture.buffer.months === null ? "—" : formatMonths(picture.buffer.months),
     income: formatMoney(picture.cashflow.incomeCents, currency),
     expenses: formatMoney(picture.cashflow.expenseCents, currency),
+    savings: formatMoney(picture.cashflow.savingsCents, currency),
+    last_savings: lastSavings,
+    last_month: picture.facts.lastMonthStart === null ? "—" : formatMonth(picture.facts.lastMonthStart),
     months_behind:
       picture.facts.monthsBehind === null ? "—" : String(picture.facts.monthsBehind),
   };

@@ -4,32 +4,52 @@ import type { MoneyPicture } from "@/domains/finance/picture";
 import { db } from "@/lib/db";
 import { financialSnapshot, netWorthSnapshot } from "@/lib/db/schema";
 import { newId } from "@/lib/id";
+import { monthClosesFromLines, type MonthClose, type MonthCloseLine } from "@/lib/money";
 
-export async function rememberMonth(workspaceId: string, picture: MoneyPicture) {
-  const id = assertWorkspaceId(workspaceId);
-
+async function upsertFinancialClose(workspaceId: string, close: MonthClose) {
   await db
     .insert(financialSnapshot)
     .values({
       id: newId(),
-      workspaceId: id,
-      periodStart: picture.month.start,
-      incomeCents: picture.cashflow.incomeCents,
-      expenseCents: picture.cashflow.expenseCents,
-      savingsCents: picture.cashflow.savingsCents,
-      savingsRateBps: picture.cashflow.savingsRateBps,
-      cashflowCents: picture.cashflow.cashflowCents,
+      workspaceId,
+      periodStart: close.periodStart,
+      incomeCents: close.incomeCents,
+      expenseCents: close.expenseCents,
+      savingsCents: close.savingsCents,
+      savingsRateBps: close.savingsRateBps,
+      cashflowCents: close.cashflowCents,
     })
     .onConflictDoUpdate({
       target: [financialSnapshot.workspaceId, financialSnapshot.periodStart],
       set: {
-        incomeCents: picture.cashflow.incomeCents,
-        expenseCents: picture.cashflow.expenseCents,
-        savingsCents: picture.cashflow.savingsCents,
-        savingsRateBps: picture.cashflow.savingsRateBps,
-        cashflowCents: picture.cashflow.cashflowCents,
+        incomeCents: close.incomeCents,
+        expenseCents: close.expenseCents,
+        savingsCents: close.savingsCents,
+        savingsRateBps: close.savingsRateBps,
+        cashflowCents: close.cashflowCents,
       },
     });
+}
+
+export async function rememberClosesFromLines(
+  workspaceId: string,
+  lines: readonly MonthCloseLine[],
+  asOf: string,
+) {
+  const id = assertWorkspaceId(workspaceId);
+  const closes = monthClosesFromLines(lines, asOf, 6);
+  for (const close of closes) {
+    await upsertFinancialClose(id, close);
+  }
+}
+
+export async function rememberMonth(workspaceId: string, picture: MoneyPicture) {
+  const id = assertWorkspaceId(workspaceId);
+
+  await upsertFinancialClose(id, {
+    periodStart: picture.month.start,
+    ...picture.cashflow,
+  });
 
   await db
     .insert(netWorthSnapshot)

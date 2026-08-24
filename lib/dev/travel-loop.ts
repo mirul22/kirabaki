@@ -16,7 +16,7 @@ export type StoryLoopItem = {
 
 export function planTravelLoop(asOf: IsoDate): StoryLoopItem[] {
   const plan = planTravelStory(asOf);
-  const [june, july] = plan.months;
+  const [may, june, july] = plan.months;
   const julyFlow = monthCashflowFromLines(plan.lines, july);
   const tokens = {
     income: formatMoney(julyFlow.incomeCents, "MYR"),
@@ -38,16 +38,25 @@ export function planTravelLoop(asOf: IsoDate): StoryLoopItem[] {
     };
   }
 
+  const mayHome = dateInMonth(may, 26, asOf);
   const juneStart = dateInMonth(june, 2, asOf);
   const junePay = dateInMonth(june, 3, asOf);
   const junePass = dateInMonth(june, 25, asOf);
   const julySlip = dateInMonth(july, 12, asOf);
   const julyTrip = dateInMonth(july, 28, asOf);
-  if (!juneStart || !junePay || !junePass || !julySlip || !julyTrip) {
+  if (!mayHome || !juneStart || !junePay || !junePass || !julySlip || !julyTrip) {
     throw new Error("Travel loop dates fell outside the as-of window.");
   }
 
   return [
+    {
+      key: "empty_month",
+      status: "completed",
+      decision: "accepted",
+      note: "Sent May money home. The month evened out.",
+      at: mayHome,
+      ...copy("empty_month"),
+    },
     {
       key: "missing_picture",
       status: "completed",

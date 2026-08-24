@@ -210,7 +210,7 @@ async function main() {
   await upsertPrimaryGoal(seat.workspaceId, person.id, plan.goal);
   await upsertProfile(seat.workspaceId, person.id, plan.focus);
 
-  for (const monthStart of plan.months.slice(0, 2)) {
+  for (const monthStart of plan.months.slice(0, -1)) {
     const end = monthRange(monthStart).end;
     const picture = await loadMoneyPicture(seat.workspaceId, end);
     await rememberMonth(seat.workspaceId, picture);

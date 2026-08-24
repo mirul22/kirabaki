@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { AppChrome } from "@/components/app/AppChrome";
-import { moneyClass, rowClass, summaryClass } from "@/components/app/fields";
+import { moneyClass, summaryClass } from "@/components/app/fields";
+import { MonthCloses } from "@/components/app/MonthCloses";
 import { NextMoveCard, OutcomeForm } from "@/components/app/NextMove";
 import { listRecentDecisions } from "@/domains/commitments/record";
 import { afterMoneyChange } from "@/domains/finance/refresh";
 import { getPrinciple } from "@/domains/knowledge/ensure";
 import { listRecentSnapshots } from "@/domains/snapshots/remember";
 import { requireWorkspace } from "@/lib/auth/session";
-import { formatMoney, formatMonth, monthPlainTalk, weekdayName } from "@/lib/money";
+import { formatMoney, monthKeepContrast, monthPlainTalk, weekdayName } from "@/lib/money";
 
 export const dynamic = "force-dynamic";
 
@@ -63,7 +64,10 @@ export default async function JourneyPage() {
 
       <div className="mt-12">
         {nextMove ? (
-          <NextMoveCard recommendation={nextMove} />
+          <NextMoveCard
+            recommendation={nextMove}
+            contrast={monthKeepContrast(nextMove.type, picture.facts, currency)}
+          />
         ) : arrived ? (
           <section className="rounded-2xl bg-kb-discovery px-5 py-6 text-[#f7efe4]">
             <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-kb-seal">KIRABAKI found</p>
@@ -113,21 +117,7 @@ export default async function JourneyPage() {
         </p>
       ) : null}
 
-      {snapshots.length > 0 ? (
-        <details className="mt-12">
-          <summary className={summaryClass}>Months remembered</summary>
-          <ul className="mt-2">
-            {snapshots.map((row) => (
-              <li key={row.id} className={rowClass}>
-                <span className="text-kb-muted">{formatMonth(row.periodStart)}</span>
-                <span className={`text-right text-sm text-kb-muted ${moneyClass}`}>
-                  {formatMoney(row.incomeCents, currency)} in · {formatMoney(row.expenseCents, currency)} out
-                </span>
-              </li>
-            ))}
-          </ul>
-        </details>
-      ) : null}
+      <MonthCloses currency={currency} currentStart={picture.month.start} snapshots={snapshots} />
     </AppChrome>
   );
 }
