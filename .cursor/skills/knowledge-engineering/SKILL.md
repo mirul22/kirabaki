@@ -28,7 +28,7 @@ The system must answer “Why did KIRABAKI recommend this?” with a traceable s
 - Store structured understanding and metadata. Quote sparingly and legally.
 - Version knowledge. Tax/regulatory interpretations change; books’ *interpretations* can too.
 - Record conflicts between sources; do not silently pick one.
-- Prefer founder-written paraphrased principles (8–15 for M1) with source + chapter citation.
+- Prefer founder-written paraphrased principles (8–15 to start) with source + chapter citation. Foundation v1: add sources through the catalog with a **tier** (official / theory / book / educator / community). See `docs/FOUNDATION-V1.md`. Do not add `sources/*.yaml` trees or ingest full books.
 
 ## Reliability
 

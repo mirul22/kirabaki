@@ -76,7 +76,10 @@ export function NextMoveCard({
         </div>
       ) : null}
       {error ? <p className="mt-3 text-sm text-kb-seal">{error}</p> : null}
-      {recommendation.type === "quiet_good" || recommendation.type === "kept_after_out" ? (
+      {recommendation.type === "quiet_good" ||
+      recommendation.type === "kept_after_out" ||
+      recommendation.type === "saving_bottleneck" ||
+      recommendation.type === "income_bottleneck" ? (
         <Link href="/money" className="mt-6 inline-flex h-11 items-center text-sm font-semibold text-[#f7efe4]/70">
           See the picture
         </Link>

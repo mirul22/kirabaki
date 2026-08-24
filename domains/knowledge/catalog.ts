@@ -6,6 +6,7 @@ export const KNOWLEDGE_SOURCES = [
     title: "The Psychology of Money",
     author: "Morgan Housel",
     kind: "book" as const,
+    tier: "book" as const,
     year: 2020,
   },
   {
@@ -13,6 +14,7 @@ export const KNOWLEDGE_SOURCES = [
     title: "The Millionaire Next Door",
     author: "Thomas J. Stanley and William D. Danko",
     kind: "book" as const,
+    tier: "book" as const,
     year: 1996,
   },
   {
@@ -20,6 +22,7 @@ export const KNOWLEDGE_SOURCES = [
     title: "The Simple Path to Wealth",
     author: "J.L. Collins",
     kind: "book" as const,
+    tier: "book" as const,
     year: 2016,
   },
   {
@@ -27,6 +30,7 @@ export const KNOWLEDGE_SOURCES = [
     title: "Your Money or Your Life",
     author: "Vicki Robin and Joe Dominguez",
     kind: "book" as const,
+    tier: "book" as const,
     year: 1992,
   },
   {
@@ -34,7 +38,15 @@ export const KNOWLEDGE_SOURCES = [
     title: "Financial education on emergency savings",
     author: "Agensi Kaunseling dan Pengurusan Kredit (AKPK)",
     kind: "regulator" as const,
+    tier: "official" as const,
     year: 2020,
+  },
+  {
+    id: "src_kclau",
+    title: "Millionaire Roadmap",
+    author: "KCLau",
+    kind: "book" as const,
+    tier: "educator" as const,
   },
 ] as const;
 
@@ -128,6 +140,42 @@ export const PRINCIPLES = [
     summary: "AKPK asks households to keep a cash reserve for surprises — a buffer, not a score.",
     explanation:
       "Malaysian consumer education through AKPK treats an emergency fund as months of living costs set aside. KIRABAKI uses this month’s spending as the denominator when you have expenses recorded.",
+  },
+  {
+    id: "pr_sir_saving",
+    sourceId: "src_kclau",
+    title: "Saving is a pillar",
+    chapter: "Budget & Saving",
+    summary: "What stays after earning is one lever of wealth, not the whole path.",
+    explanation:
+      "KCLau treats saving as one of three pillars. KIRABAKI measures the gap this month. A small gap is a fact, not a grade.",
+  },
+  {
+    id: "pr_sir_income",
+    sourceId: "src_kclau",
+    title: "Income can still be the lever",
+    chapter: "Raise Income",
+    summary: "Cutting out has a floor. Earning can still move the path.",
+    explanation:
+      "When a gap already stays, another cut is often the wrong next move. KIRABAKI names earning power only from measured savings and income — not from a vibe.",
+  },
+  {
+    id: "pr_roadmap_target",
+    sourceId: "src_kclau",
+    title: "Name the destination",
+    chapter: "Plot Your Millionaire Roadmap",
+    summary: "A roadmap needs where you are going and when.",
+    explanation:
+      "KCLau starts with a named target and a date. KIRABAKI already uses one goal. The pace comes from the contribution you named, not from a hoped-for return.",
+  },
+  {
+    id: "pr_leakage",
+    sourceId: "src_kclau",
+    title: "Money needs a job",
+    chapter: "Allocate Capital",
+    summary: "Cash that has no job still leaves.",
+    explanation:
+      "KCLau treats allocation as giving money a job. KIRABAKI will not invent tax or investment figures. It notices whether a gap stayed this month.",
   },
 ] as const;
 
@@ -227,6 +275,30 @@ export const RULES: SeedRule[] = [
     happening: "{last_month} nothing stayed. This month some of it did.",
     why: "A good month is not a reason to spend the cash you set aside.",
     ifNothing: "The cash you kept can still go.",
+    nextAction: "See the picture",
+  },
+  {
+    id: "rule_saving_bottleneck",
+    key: "saving_bottleneck",
+    name: "The gap is still small",
+    versionId: "rv_saving_bottleneck_1",
+    priority: 55,
+    principleId: "pr_sir_saving",
+    happening: "You kept {savings_rate} of {income}. Some of it stayed.",
+    why: "Saving is a pillar. The gap can still grow.",
+    ifNothing: "The month can repeat at this gap.",
+    nextAction: "See the picture",
+  },
+  {
+    id: "rule_income_bottleneck",
+    key: "income_bottleneck",
+    name: "Earning power is the next lever",
+    versionId: "rv_income_bottleneck_1",
+    priority: 70,
+    principleId: "pr_sir_income",
+    happening: "You kept {savings_rate} of {income}. Pay did not rise versus {last_month}.",
+    why: "When a gap already stays, another cut is often the wrong next move.",
+    ifNothing: "The path stays at this earning pace.",
     nextAction: "See the picture",
   },
   {

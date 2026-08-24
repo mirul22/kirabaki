@@ -5,7 +5,19 @@ import { knowledgeSource, principle, rule, ruleVersion } from "@/lib/db/schema";
 
 export async function ensureKnowledge() {
   for (const source of KNOWLEDGE_SOURCES) {
-    await db.insert(knowledgeSource).values(source).onConflictDoNothing();
+    await db
+      .insert(knowledgeSource)
+      .values(source)
+      .onConflictDoUpdate({
+        target: knowledgeSource.id,
+        set: {
+          title: source.title,
+          author: source.author,
+          kind: source.kind,
+          tier: source.tier,
+          year: "year" in source ? source.year : null,
+        },
+      });
   }
   for (const row of PRINCIPLES) {
     await db
